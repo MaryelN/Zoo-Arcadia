@@ -1,5 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<body>
+    <section class="hero-index">
+        <div class="container pt-4 pt-xl-5">
+            <div class="row g-0 pt-5">
+                <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+                    <div class="text-center">
+                        <h1>Vivez une Aventure Épique au Zoo Arcadia</h1>
+                        <a href="" class="btn btn-primary mt-3" type="button" >A PROPOS DE NOUS</a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
 
+  <section class="intro-index">
+      <div class="container text-center mt-5">
+            <h2>Découvrez le Zoo Arcadia</h2>
+            <p>Rejoignez-nous pour une aventure inoubliable, des rencontres uniques et des leçons d'écologie marquantes. Venez explorer nos parcours animaliers dès aujourd'hui !</p>
+      </div>
+  </section>
+
+    <section class="animals">
+      <div class="m-3">
+        <h2 class="text-center">Découvrez nos animaux par habitat</h2>
+      </div>
+      
+      <div class="animal__cards d-flex justify-content-center">
+        <div class="card m-3" style="width: 18rem;">
+          <img src={{ asset('images/cards-1/jungle.jpg') }} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-text">LES ANIMAUX DES JUNGLES</h2>
+          </div>
+        </div>
+        <div class="card m-3" style="width: 18rem;">
+          <img src={{ asset('images/cards-1/foret.jpg') }} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-text">LES ANIMAUX DES JUNGLES</h2>
+          </div>
+        </div>
+        <div class="card m-3" style="width: 18rem;">
+          <img src={{ asset('images/cards-1/prairies.jpg') }} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-text">LES ANIMAUX DES PRAIRIES</h2>
+          </div>
+        </div>
+        <div class="card m-3" style="width: 18rem;">
+          <img src={{ asset('images/cards-1/savane.jpg') }} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-text">LES ANIMAUX DE LA SAVANE </h2>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+</body>
 {% endblock %}
