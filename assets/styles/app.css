@@ -1,0 +1,49 @@
+body {
+    background-color: lightgray;
+    list-style: none;
+
+}
+.hero-index {
+    background-image: url(../images/heros/giraffes.jpg); 
+    background-size: cover; 
+    background-position: center; 
+    height: 530px;
+}
+
+.hero-index__text{
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+
+.title-box {
+    background-color: rgba(40, 36, 36, 0.5);
+    padding: 20px 0 20px 0;
+    border-radius: 10px;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.services__cards, .animal__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    height: 500px;
+}
+footer{
+    background-color: rgba(40, 36, 36, 0.5);
+}
+.footer-box {
+    background-color: rgba(61, 150, 61, 0.792);
+    padding: 20px 0 20px 0;
+    max-width: 300px;
+    border-radius: 10px;
+
+}
+
+.partner {
+    border-radius: 50%;
+}
