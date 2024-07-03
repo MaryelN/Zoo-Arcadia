@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "sass": "^1.77.6",
-        "sass-loader": "^14.2.1"
+        "sass-loader": "^14.2.1",
+        "watch": "^1.0.2"
     }
 }
