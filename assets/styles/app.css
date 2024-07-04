@@ -1,8 +1,14 @@
+*{
+    list-style: none;
+}
+
 body {
     background-color: lightgray;
-    list-style: none;
 
 }
+
+/*Index*/
+
 .hero-index {
     background-image: url(../images/heros/giraffes.jpg); 
     background-size: cover; 
@@ -31,8 +37,12 @@ body {
 }
 
 .card {
-    height: 500px;
+    min-height: 500px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.259);
 }
+
+/* footer */
+
 footer{
     background-color: rgba(40, 36, 36, 0.5);
 }
@@ -43,7 +53,27 @@ footer{
     border-radius: 10px;
 
 }
-
 .partner {
     border-radius: 50%;
+}
+
+/*Services*/
+
+.hero-services {
+    background-image: url(../images/heros/tigre.jpg); 
+    background-size: cover; 
+    background-position: center; 
+    height: 350px;
+}
+
+.hero-services__text {
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.card__train img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
 }
