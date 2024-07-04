@@ -4,11 +4,11 @@
 
 {% block body %}
 <body>
-    <section class="hero-services">
+    <section class="services-hero">
         <div class="container pt-4 pt-xl-5">
             <div class="row g-0 pt-5">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
-                    <div class="hero-services__text text-center">
+                    <div class="services-hero__text text-center">
                         <h1>Services</h1>
                     </div>
                 </div>  
@@ -16,7 +16,7 @@
         </div>
     </section>
 
-    <section class="intro-services mt-5">
+    <section class="services-intro mt-5">
         <div class="container text-center py-5">
             <h2>Nos Tarifs</h2>
             <h3>Découvrez nos offres tarifaires adaptées à tous ! Le billet d'entrée inclut une visite guidée gratuite. 
@@ -24,8 +24,8 @@
         </div>
     </section>
 
-    <section class="prices">
-            <div class="card card__tarif mx-3 mx-auto" style=" width: 25rem;">
+    <section class="services-cards">
+            <div class="card services-cards__price mx-3 mx-auto" style=" width: 25rem;">
                 <div class="card-body">
                     <h2 class="card-title text-center mt-2">Tariff 1 jour</h2>
                     <p class="card-text text center p-5">Valable tous les jours d’ouverture, 1 an à partir de la date d’achat</p>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card card__train mx-3 mx-auto mt-5" style=" width: 30rem;">
+            <div class="card services-cards__train mx-3 mx-auto mt-5" style=" width: 30rem;">
                 <div class="card-body">
                     <h2 class="card-title text-center mt-2">Tariff 1 jour train</h2>
                     <p class="card-text text center p-5">Valable tous les jours d’ouverture, 1 an à partir de la date d’achat</p>
@@ -71,7 +71,7 @@
             </div>
     </section>
 
-    <section class="hours text-center">
+    <section class="services-hours text-center">
         <h2>Horaires</h2>
         <ul class="m-5">
         <li>Lundi   08h30 - 18h30</li>
@@ -84,10 +84,12 @@
         </ul>
     </section>
 
-    <section class="restaurant">
-        <div class="container text-center py-5">
+    <section class="services-restaurant">
+        <div class="container text-center py-5 my-5">
             <h2>Restaurant</h2>
-            <h3>Savourez un délicieux repas dans notre café-jungle confortable, avec vue sur nos magnifiques oiseaux exotiques. Nous vous offrons une cuisine variée et savoureuse, préparée avec des ingrédients de producteurs locaux.</h3>
+            <p class="p-5 mx-5">Savourez un délicieux repas dans notre café-jungle confortable, avec vue sur nos magnifiques oiseaux exotiques. Nous vous offrons une cuisine variée et savoureuse, préparée avec des ingrédients de producteurs locaux.</p>
+            <img class="img-fluid rounded" src={{ asset('images/cards-2/resto.jpg') }} alt="photo du restaurant">
+            <p class="p-5 mx-5">Notre menu met en valeur les saveurs locales de la région. Dégustez des plats inspirés par la richesse culinaire de la Bretagne, comme des galettes bretonnes, des fruits de mer frais et des produits fermiers.</p>
         </div>
     </section>
 
