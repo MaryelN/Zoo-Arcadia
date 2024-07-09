@@ -1,9 +1,9 @@
-
+@use '../base/colors' as *;
 footer{
-    background-color: rgba(40, 36, 36, 0.5);
+    background-color: $primary;
 }
 .footer-box {
-    background-color: rgba(61, 150, 61, 0.792);
+    background-color: secondary;
     padding: 20px 0 20px 0;
     max-width: 300px;
     border-radius: 10px;
