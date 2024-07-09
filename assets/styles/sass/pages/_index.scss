@@ -1,0 +1,39 @@
+@use "../base/main" as *;
+
+
+.index-hero {
+    background-image: url(../../../images/heros/giraffes.jpg); 
+    background-size: cover; 
+    background-position: center; 
+    height: 530px;
+    
+    &__text{
+        color: $info;
+        text-align: center;
+        padding-top: 200px;
+    }
+}
+
+
+.title-box {
+    background-color: rgba(40, 36, 36, 0.5);
+    padding: 20px 0 20px 0;
+    border-radius: 10px;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.index-services__cards, .index-habitat__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    min-height: 300px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.259);
+}
+
+.card-comment {
+    width: 18rem;
+}

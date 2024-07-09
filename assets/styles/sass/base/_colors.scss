@@ -1,0 +1,14 @@
+$green: #9BA12C;
+$brown: #5d542f;
+$soft-green: #C0d6b6;
+$shade: #252225;
+$white: #ffffff;
+
+
+$primary: $green;
+$secondary: $brown;
+$dark: $shade;
+$light: $white;
+$info: $soft-green;
+
+@import "~bootstrap/scss/bootstrap";
