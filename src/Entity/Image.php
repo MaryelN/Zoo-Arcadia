@@ -16,7 +16,7 @@ class Image
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\ManyToOne(inversedBy: 'Images')]
     #[ORM\JoinColumn(nullable: false)]
     private ?animal $animal_id = null;
 
@@ -37,12 +37,12 @@ class Image
         return $this;
     }
 
-    public function getAnimalId(): ?animal
+    public function getAnimalId(): ?Animal
     {
         return $this->animal_id;
     }
 
-    public function setAnimalId(?animal $animal_id): static
+    public function setAnimalId(?Animal $animal_id): static
     {
         $this->animal_id = $animal_id;
 

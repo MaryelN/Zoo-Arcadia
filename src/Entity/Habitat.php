@@ -24,7 +24,7 @@ class Habitat
     /**
      * @var Collection<int, Animal>
      */
-    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat_id')]
+    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'Habitat_id')]
     private Collection $animals;
 
     public function __construct()

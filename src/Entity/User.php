@@ -18,10 +18,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(unique: true, type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 100)]
     private ?string $email = null;
 
     /**
@@ -45,13 +45,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, AnimalReport>
      */
-    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'user_id')]
+    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'User_id')]
     private Collection $animalReports;
 
     /**
      * @var Collection<int, FoodReport>
      */
-    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'user_id')]
+    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'User_id')]
     private Collection $foodReports;
 
     public function __construct()

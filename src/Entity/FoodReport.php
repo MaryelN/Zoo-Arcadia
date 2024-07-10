@@ -23,11 +23,11 @@ class FoodReport
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $details = null;
 
-    #[ORM\ManyToOne(inversedBy: 'foodReports')]
+    #[ORM\ManyToOne(inversedBy: 'FoodReports')]
     #[ORM\JoinColumn(nullable: false)]
     private ?animal $animal_id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'foodReports')]
+    #[ORM\ManyToOne(inversedBy: 'FoodReports')]
     private ?user $user_id = null;
 
     public function getId(): ?int
@@ -71,24 +71,24 @@ class FoodReport
         return $this;
     }
 
-    public function getAnimalId(): ?animal
+    public function getAnimalId(): ?Animal
     {
         return $this->animal_id;
     }
 
-    public function setAnimalId(?animal $animal_id): static
+    public function setAnimalId(?Animal $animal_id): static
     {
         $this->animal_id = $animal_id;
 
         return $this;
     }
 
-    public function getUserId(): ?user
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(?user $user_id): static
+    public function setUserId(?User $user_id): static
     {
         $this->user_id = $user_id;
 

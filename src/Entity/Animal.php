@@ -21,29 +21,29 @@ class Animal
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $details = null;
 
-    #[ORM\ManyToOne(inversedBy: 'animals')]
+    #[ORM\ManyToOne(inversedBy: 'Animals')]
     #[ORM\JoinColumn(nullable: false)]
     private ?habitat $habitat_id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'animals')]
-    private ?race $race_id = null;
+    #[ORM\ManyToOne(inversedBy: 'Animals')]
+    private ?Race $race_id = null;
 
     /**
      * @var Collection<int, Image>
      */
-    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'animal_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'Animal_id', orphanRemoval: true)]
     private Collection $images;
 
     /**
      * @var Collection<int, AnimalReport>
      */
-    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'animal_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'Animal_id', orphanRemoval: true)]
     private Collection $animalReports;
 
     /**
      * @var Collection<int, FoodReport>
      */
-    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'animal_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'Animal_id', orphanRemoval: true)]
     private Collection $foodReports;
 
     public function __construct()
@@ -82,24 +82,24 @@ class Animal
         return $this;
     }
 
-    public function getHabitatId(): ?habitat
+    public function getHabitatId(): ?Habitat
     {
         return $this->habitat_id;
     }
 
-    public function setHabitatId(?habitat $habitat_id): static
+    public function setHabitatId(?Habitat $habitat_id): static
     {
         $this->habitat_id = $habitat_id;
 
         return $this;
     }
 
-    public function getRaceId(): ?race
+    public function getRaceId(): ?Race
     {
         return $this->race_id;
     }
 
-    public function setRaceId(?race $race_id): static
+    public function setRaceId(?Race $race_id): static
     {
         $this->race_id = $race_id;
 
