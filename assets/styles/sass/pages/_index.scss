@@ -16,22 +16,82 @@
 
 
 .title-box {
-    background-color: rgba(40, 36, 36, 0.5);
+    background-color: $secondary;
+    color: $light;
     padding: 20px 0 20px 0;
-    border-radius: 10px;
+    border-radius: 1rem;
     max-width: 400px;
     min-width: 300px;
+    margin-bottom: 5rem;
+}
+
+.card {
+    background-size: cover; 
+    background-position: center; 
+    min-height: 10rem;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.259);
+    display: flex;
+    justify-content: end;
+}
+
+.card-text {
+    text-align: center;
+    padding: 1rem;
 }
 
 .index-services__cards, .index-habitat__cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border-radius: 1rem;
 }
 
-.card {
-    min-height: 300px;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.259);
+@mixin card-body {
+    color: $light;
+    opacity: 0.8;
+    margin: 10rem 1rem;
+}
+
+.index-habitat {
+    margin-bottom: 5rem;
+
+    .card-1 {
+        background-image: url(../../../images/cards-1/jungle.jpg);
+    }
+    .card-2 {
+        background-image: url(../../../images/cards-1/foret.jpg);
+    }
+    .card-3 {
+        background-image: url(../../../images/cards-1/prairies.jpg);
+    }
+    .card-4 {
+        background-image: url(../../../images/cards-1/savane.jpg);
+    }
+    .card-body {
+        @include card-body;
+        background-color: $info;
+    }
+}
+
+.index-services {
+    background-color: $primary;
+
+    .card-1 {
+        background-image: url(../../../images/cards-2/guide.jpg);
+    }
+    .card-2 {
+        background-image: url(../../../images/cards-2/train.jpg);
+    }
+    .card-3 {
+        background-image: url(../../../images/cards-2/resto-2.jpg);
+    }
+    .card-4 {
+        background-image: url(../../../images/cards-2/horaires.jpg);
+    }
+    .card-body {
+        @include card-body;
+        background-color: $secondary;
+    }
 }
 
 .card-comment {

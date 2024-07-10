@@ -9,7 +9,7 @@
                 <p>+33 02 99 00 00 00</p>
             </div>
             <div class="col-md-6 col-lg-4">
-                <a class="d-flex justify-content-center" href=""><button class="btn btn-secondary" type="button">CONTACTER</button></a>
+                <a class="d-flex justify-content-center" href=""><button class="btn btn-3" role="button" type="button">CONTACTER</button></a>
                 <div class="my-3 d-flex justify-content-center">
                     <a class="mx-2" href=""><img src={{ asset('images/logos/logo-1.png') }} height="30" alt="icon facebook"></a>
                     <a class="mx-2" href=""><img src={{ asset('images/logos/logo-1.png') }} height="30" alt="icon twitter"></a>
@@ -25,16 +25,14 @@
             </div>
         </div>    
     <div class="navlinks">
-      <ul class="nav d-flex flex-wrap justify-content-center border-bottom pb-3 my-5">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Accueil</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Nos  services</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Nos habitats</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contacter</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">A Propos</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Mention légales</a></li>
-      </ul>
-      <p class="text-center text-body-secondary">© Copyright 2024 Arcadia</p>
-    </div>
+        <ul class="nav d-flex flex-wrap justify-content-center border-bottom pb-3 my-5">
+            <li class="nav-item"><a href="{{path('app_index')}}" class="nav-link px-2">Accueil</a></li>
+            <li class="nav-item"><a href="{{path('app_services')}}" class="nav-link px-2">Nos services</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Nos habitats</a></li>
+            <li class="nav-item"><a href="{{path('app_contact')}}" class="nav-link px-2">Contacter</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">A Propos</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Mention légales</a></li>
+        </ul>
+        <p class="text-center text-body-info">© Copyright 2024 Arcadia</p>
+        </div>
 </footer>
-  
-  
