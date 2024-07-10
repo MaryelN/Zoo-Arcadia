@@ -25,7 +25,18 @@
       </ul>
 
       <div class="text-end">
+        {% if app.user %}
+          <div class="d-flex">
+            <li class="mx-2">
+              <a class="btn btn-secondary my-sm-0" href="{{path('admin')}}">Tableau de bord</a>
+            </li>
+            <li>
+              <a class="btn btn-secondary my-sm-0" href="{{path('app_logout')}}" type="submit">Deconnexion</a>
+            </li>
+          </div>
+        {% else %}
         <a href="{{ path('app_login') }}"><button type="button" class="btn btn-outline-light me-2 button-28">Login</button></a>
+        {% endif %}
       </div>
     </div>
   </div>
