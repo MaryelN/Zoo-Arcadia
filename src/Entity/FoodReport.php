@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\FoodRepportRepository;
+use App\Repository\FoodReportRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: FoodRepportRepository::class)]
-class FoodRepport
+#[ORM\Entity(repositoryClass: FoodReportRepository::class)]
+class FoodReport
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,7 +15,7 @@ class FoodRepport
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $date_hour = null;
+    private ?\DateTimeInterface $date_time = null;
 
     #[ORM\Column(length: 50)]
     private ?string $food_quantity = null;
@@ -23,11 +23,11 @@ class FoodRepport
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $details = null;
 
-    #[ORM\ManyToOne(inversedBy: 'foodRepports')]
+    #[ORM\ManyToOne(inversedBy: 'foodReports')]
     #[ORM\JoinColumn(nullable: false)]
     private ?animal $animal_id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'foodRepports')]
+    #[ORM\ManyToOne(inversedBy: 'foodReports')]
     private ?user $user_id = null;
 
     public function getId(): ?int
@@ -35,14 +35,14 @@ class FoodRepport
         return $this->id;
     }
 
-    public function getDateHour(): ?\DateTimeInterface
+    public function getDateTime(): ?\DateTimeInterface
     {
-        return $this->date_hour;
+        return $this->date_time;
     }
 
-    public function setDateHour(\DateTimeInterface $date_hour): static
+    public function setDateTime(\DateTimeInterface $date_time): static
     {
-        $this->date_hour = $date_hour;
+        $this->date_time = $date_time;
 
         return $this;
     }

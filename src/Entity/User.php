@@ -2,34 +2,45 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\Timestamp;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use Timestamp;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, unique: true)]
+    #[ORM\Column(length: 180)]
     private ?string $email = null;
+
+    /**
+     * @var list<string> The user roles
+     */
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(length: 50)]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
-
-    #[ORM\Column(length: 20)]
-    private ?string $password = null;
-
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?role $role_id = null;
 
     /**
      * @var Collection<int, AnimalReport>
@@ -38,15 +49,15 @@ class User
     private Collection $animalReports;
 
     /**
-     * @var Collection<int, FoodRepport>
+     * @var Collection<int, FoodReport>
      */
-    #[ORM\OneToMany(targetEntity: FoodRepport::class, mappedBy: 'user_id')]
-    private Collection $foodRepports;
+    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'user_id')]
+    private Collection $foodReports;
 
     public function __construct()
     {
         $this->animalReports = new ArrayCollection();
-        $this->foodRepports = new ArrayCollection();
+        $this->foodReports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,6 +75,63 @@ class User
         $this->email = $email;
 
         return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     * @return list<string>
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * @param list<string> $roles
+     */
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getLastname(): ?string
@@ -86,30 +154,6 @@ class User
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    public function getRoleId(): ?role
-    {
-        return $this->role_id;
-    }
-
-    public function setRoleId(?role $role_id): static
-    {
-        $this->role_id = $role_id;
 
         return $this;
     }
@@ -145,29 +189,29 @@ class User
     }
 
     /**
-     * @return Collection<int, FoodRepport>
+     * @return Collection<int, FoodReport>
      */
-    public function getFoodRepports(): Collection
+    public function getFoodReports(): Collection
     {
-        return $this->foodRepports;
+        return $this->foodReports;
     }
 
-    public function addFoodRepport(FoodRepport $foodRepport): static
+    public function addFoodReport(FoodReport $foodReport): static
     {
-        if (!$this->foodRepports->contains($foodRepport)) {
-            $this->foodRepports->add($foodRepport);
-            $foodRepport->setUserId($this);
+        if (!$this->foodReports->contains($foodReport)) {
+            $this->foodReports->add($foodReport);
+            $foodReport->setUserId($this);
         }
 
         return $this;
     }
 
-    public function removeFoodRepport(FoodRepport $foodRepport): static
+    public function removeFoodReport(FoodReport $foodReport): static
     {
-        if ($this->foodRepports->removeElement($foodRepport)) {
+        if ($this->foodReports->removeElement($foodReport)) {
             // set the owning side to null (unless already changed)
-            if ($foodRepport->getUserId() === $this) {
-                $foodRepport->setUserId(null);
+            if ($foodReport->getUserId() === $this) {
+                $foodReport->setUserId(null);
             }
         }
 

@@ -29,28 +29,28 @@ class Animal
     private ?race $race_id = null;
 
     /**
-     * @var Collection<int, AnimalReport>
-     */
-    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'animal_id')]
-    private Collection $animalReports;
-
-    /**
      * @var Collection<int, Image>
      */
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'animal_id', orphanRemoval: true)]
     private Collection $images;
 
     /**
-     * @var Collection<int, FoodRepport>
+     * @var Collection<int, AnimalReport>
      */
-    #[ORM\OneToMany(targetEntity: FoodRepport::class, mappedBy: 'animal_id', orphanRemoval: true)]
-    private Collection $foodRepports;
+    #[ORM\OneToMany(targetEntity: AnimalReport::class, mappedBy: 'animal_id', orphanRemoval: true)]
+    private Collection $animalReports;
+
+    /**
+     * @var Collection<int, FoodReport>
+     */
+    #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'animal_id', orphanRemoval: true)]
+    private Collection $foodReports;
 
     public function __construct()
     {
-        $this->animalReports = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->foodRepports = new ArrayCollection();
+        $this->animalReports = new ArrayCollection();
+        $this->foodReports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,36 +107,6 @@ class Animal
     }
 
     /**
-     * @return Collection<int, AnimalReport>
-     */
-    public function getAnimalReports(): Collection
-    {
-        return $this->animalReports;
-    }
-
-    public function addAnimalReport(AnimalReport $animalReport): static
-    {
-        if (!$this->animalReports->contains($animalReport)) {
-            $this->animalReports->add($animalReport);
-            $animalReport->setAnimalId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnimalReport(AnimalReport $animalReport): static
-    {
-        if ($this->animalReports->removeElement($animalReport)) {
-            // set the owning side to null (unless already changed)
-            if ($animalReport->getAnimalId() === $this) {
-                $animalReport->setAnimalId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Image>
      */
     public function getImages(): Collection
@@ -167,29 +137,59 @@ class Animal
     }
 
     /**
-     * @return Collection<int, FoodRepport>
+     * @return Collection<int, AnimalReport>
      */
-    public function getFoodRepports(): Collection
+    public function getAnimalReports(): Collection
     {
-        return $this->foodRepports;
+        return $this->animalReports;
     }
 
-    public function addFoodRepport(FoodRepport $foodRepport): static
+    public function addAnimalReport(AnimalReport $animalReport): static
     {
-        if (!$this->foodRepports->contains($foodRepport)) {
-            $this->foodRepports->add($foodRepport);
-            $foodRepport->setAnimalId($this);
+        if (!$this->animalReports->contains($animalReport)) {
+            $this->animalReports->add($animalReport);
+            $animalReport->setAnimalId($this);
         }
 
         return $this;
     }
 
-    public function removeFoodRepport(FoodRepport $foodRepport): static
+    public function removeAnimalReport(AnimalReport $animalReport): static
     {
-        if ($this->foodRepports->removeElement($foodRepport)) {
+        if ($this->animalReports->removeElement($animalReport)) {
             // set the owning side to null (unless already changed)
-            if ($foodRepport->getAnimalId() === $this) {
-                $foodRepport->setAnimalId(null);
+            if ($animalReport->getAnimalId() === $this) {
+                $animalReport->setAnimalId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FoodReport>
+     */
+    public function getFoodReports(): Collection
+    {
+        return $this->foodReports;
+    }
+
+    public function addFoodReport(FoodReport $foodReport): static
+    {
+        if (!$this->foodReports->contains($foodReport)) {
+            $this->foodReports->add($foodReport);
+            $foodReport->setAnimalId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFoodReport(FoodReport $foodReport): static
+    {
+        if ($this->foodReports->removeElement($foodReport)) {
+            // set the owning side to null (unless already changed)
+            if ($foodReport->getAnimalId() === $this) {
+                $foodReport->setAnimalId(null);
             }
         }
 

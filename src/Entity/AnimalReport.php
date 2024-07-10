@@ -5,32 +5,32 @@ namespace App\Entity;
 use App\Entity\Traits\Timestamp;
 use App\Repository\AnimalReportRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnimalReportRepository::class)]
 class AnimalReport
 {
     use Timestamp;
-
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[ORM\Column(length: 100)]
     private ?string $proposed_food = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $proposed_quantity = null;
 
-    #[ORM\Column(length: 200)]
-    #[Assert\NotBlank]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $details = null;
 
     #[ORM\ManyToOne(inversedBy: 'animalReports')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?animal $animal_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'animalReports')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?user $user_id = null;
 
     public function getId(): ?int
@@ -43,7 +43,7 @@ class AnimalReport
         return $this->proposed_food;
     }
 
-    public function setProposedFood(?string $proposed_food): static
+    public function setProposedFood(string $proposed_food): static
     {
         $this->proposed_food = $proposed_food;
 
@@ -67,7 +67,7 @@ class AnimalReport
         return $this->details;
     }
 
-    public function setDetails(string $details): static
+    public function setDetails(?string $details): static
     {
         $this->details = $details;
 
