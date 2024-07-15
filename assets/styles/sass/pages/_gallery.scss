@@ -1,0 +1,14 @@
+@use "../base/main" as *;
+
+.gallery-hero {
+  background-image: url(../../../images/heros/parrot.jpg); 
+  background-size: cover; 
+  background-position: center; 
+  height: 530px;
+  
+  &__text{
+      color: $info;
+      text-align: center;
+      padding-top: 200px;
+  }
+}
