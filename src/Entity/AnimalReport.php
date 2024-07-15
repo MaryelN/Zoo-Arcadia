@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\Timestamp;
 use App\Repository\AnimalReportRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnimalReportRepository::class)]
@@ -32,6 +33,11 @@ class AnimalReport
     #[ORM\ManyToOne(inversedBy: 'AnimalReports')]
     #[ORM\JoinColumn(nullable: false)]
     private ?user $user_id = null;
+
+    public function __construct()
+    {
+        $this->timestamp = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -96,5 +102,10 @@ class AnimalReport
         $this->user_id = $user_id;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->proposed_food;
     }
 }

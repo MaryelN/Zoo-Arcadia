@@ -23,7 +23,7 @@ class Animal
 
     #[ORM\ManyToOne(inversedBy: 'Animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?habitat $habitat_id = null;
+    private ?Habitat $habitat_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'Animals')]
     private ?Race $race_id = null;
@@ -194,5 +194,10 @@ class Animal
         }
 
         return $this;
+    }
+    
+    public function __toString(): string
+    {
+        return $this->name ?? '';
     }
 }

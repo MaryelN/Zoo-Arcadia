@@ -58,6 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->animalReports = new ArrayCollection();
         $this->foodReports = new ArrayCollection();
+        $this->timestamp = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -216,5 +217,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

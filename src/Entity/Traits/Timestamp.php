@@ -20,4 +20,12 @@ trait Timestamp
 
       return $this;
   }
+
+  #[ORM\PrePersist]
+  public function setTimestampValue(): void
+  {
+      if ($this->timestamp === null) {
+          $this->timestamp = new \DateTimeImmutable();
+      }
+  }
 }
