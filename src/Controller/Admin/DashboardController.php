@@ -44,16 +44,16 @@ class DashboardController extends AbstractDashboardController
         if ($this->isGranted('ROLE_ADMIN')) {
             $menuItems[] = MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
             $menuItems[] = MenuItem::linkToCrud('Horaires', 'fa fa-clock', Schedule::class);
-        }
-        
+        } 
+    
         $MenuItem[] = MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        $menuItems[] = MenuItem::linkToCrud('Animaux', 'fas fa-list', Animal::class);
-        $menuItems[] = MenuItem::linkToCrud('Habitats', 'fas fa-list', Habitat::class);
-        $menuItems[] = MenuItem::linkToCrud('Avis', 'fa fa-list', Comment::class);
+        $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
+        $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
+        $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
         
         $menuItems[] = MenuItem::section('Reports');
-        $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa fa-list', AnimalReport::class);
-        $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa fa-list', FoodReport::class);
+        $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
+        $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa-solid fa-shield-dog', AnimalReport::class);
         
         return $menuItems;
     }
