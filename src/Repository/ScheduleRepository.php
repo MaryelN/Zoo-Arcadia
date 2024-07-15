@@ -16,6 +16,24 @@ class ScheduleRepository extends ServiceEntityRepository
         parent::__construct($registry, Schedule::class);
     }
 
+    public function getFormattedSchedules(): array
+    {
+        $qb = $this->createQueryBuilder('s')
+        ->orderBy('s.id', 'ASC');
+
+        $schedules = $qb->getQuery()->getResult();
+
+        $formattedSchedules = array_map(function ($schedule) {
+            return [
+                'dayName' => $schedule->getDayName(),
+                'opening' => $schedule->getOpening()->format('H:i'),
+                'closing' => $schedule->getClosing()->format('H:i'),
+            ];
+        }, $schedules);
+
+        return $formattedSchedules;
+    }
+
 //    /**
 //     * @return Schedule[] Returns an array of Schedule objects
 //     */

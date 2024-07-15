@@ -74,13 +74,10 @@
     <section class="services-hours text-center">
         <h2>Horaires</h2>
         <ul class="m-5">
-        <li>Lundi   08h30 - 18h30</li>
-        <li>Mardi  08h30 - 18h30</li>
-        <li>Mercredi 08h30 - 18h30</li>
-        <li>Jeudi 08h30 - 18h30</li>
-        <li>Vendredi 08h30 - 18h30</li>
-        <li>Samedi 08h30 - 18h30</li>
-        <li>Dimanche Fermé</li>
+            {% for schedule in schedules %}
+                <li class="m-3">{{ schedule.dayName }} : {{ schedule.opening }} - {{ schedule.closing }}</li>
+                
+            {% endfor %}
         </ul>
     </section>
 
