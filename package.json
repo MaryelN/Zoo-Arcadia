@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@symfony/stimulus-bridge": "^3.2.2",
         "sass": "^1.77.6",
         "sass-loader": "^14.2.1",
         "watch": "^1.0.2"
