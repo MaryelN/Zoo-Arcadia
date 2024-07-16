@@ -34,6 +34,9 @@ class AnimalReport
     #[ORM\JoinColumn(nullable: false)]
     private ?user $user_id = null;
 
+    #[ORM\Column(length: 150)]
+    private ?string $health = null;
+
     public function __construct()
     {
         $this->timestamp = new \DateTimeImmutable();
@@ -107,5 +110,17 @@ class AnimalReport
     public function __toString(): string
     {
         return $this->proposed_food;
+    }
+
+    public function getHealth(): ?string
+    {
+        return $this->health;
+    }
+
+    public function setHealth(string $health): static
+    {
+        $this->health = $health;
+
+        return $this;
     }
 }

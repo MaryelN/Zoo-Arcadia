@@ -28,6 +28,9 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'Animals')]
     private ?Race $race_id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Animals', targetEntity: Image::class, cascade: ['persist', 'remove'])]
+    private ?Image $image_id = null;
+
     /**
      * @var Collection<int, Image>
      */
@@ -45,6 +48,9 @@ class Animal
      */
     #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'Animal_id', orphanRemoval: true)]
     private Collection $foodReports;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $votes = null;
 
     public function __construct()
     {
@@ -102,6 +108,18 @@ class Animal
     public function setRaceId(?Race $race_id): static
     {
         $this->race_id = $race_id;
+
+        return $this;
+    }
+
+    public function getImageId(): ?Image
+    {
+        return $this->image_id;
+    }
+
+    public function setImageId(?Image $image_id): self
+    {
+        $this->image_id = $image_id;
 
         return $this;
     }
@@ -199,5 +217,17 @@ class Animal
     public function __toString(): string
     {
         return $this->name ?? '';
+    }
+
+    public function getVotes(): ?int
+    {
+        return $this->votes;
+    }
+
+    public function setVotes(?int $votes): static
+    {
+        $this->votes = $votes;
+
+        return $this;
     }
 }
