@@ -39,7 +39,6 @@ class AnimalCrudController extends AbstractCrudController
         AssociationField::new('habitat_id')
             ->setLabel('Habitat')
             ->setHelp('Choisissez l\'habitat de l\'animal'),
-
         AssociationField::new('race_id')
             ->setLabel('race')
             ->setHelp('Choisissez la race de l\'animal'),

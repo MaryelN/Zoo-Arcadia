@@ -7,6 +7,8 @@ use App\Entity\AnimalReport;
 use App\Entity\Comment;
 use App\Entity\FoodReport;
 use App\Entity\Habitat;
+use App\Entity\Image;
+use App\Entity\Race;
 use App\Entity\Schedule;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -48,7 +50,9 @@ class DashboardController extends AbstractDashboardController
     
         $MenuItem[] = MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
+        $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
         $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
+        $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
         $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
         
         $menuItems[] = MenuItem::section('Reports');

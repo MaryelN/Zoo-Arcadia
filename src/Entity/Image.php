@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
-use Vich\UploaderBundle\Entity\File;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[Vich\Uploadable]
@@ -23,7 +23,7 @@ class Image
     #[ORM\Column(length: 100, type: 'string')]
     private ?string $imageName = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column]
     private ?int $imageSize = null;
 
     #[ORM\Column(type: 'datetime')]
@@ -86,12 +86,12 @@ class Image
         return $this->imageName;
     }
 
-    public function getImageSize(): ?Integer
+    public function getImageSize(): ?Int
     {
         return $this->imageSize;
     }
 
-    public function setImageSize(?Integer $imageSize): static
+    public function setImageSize(?Int $imageSize): static
     {
         $this->imageSize = $imageSize;
 

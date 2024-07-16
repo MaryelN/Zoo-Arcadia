@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Faker\Provider\ar_EG\Text;
 
 class AnimalReportCrudController extends AbstractCrudController
 {
@@ -39,9 +40,11 @@ class AnimalReportCrudController extends AbstractCrudController
             TextField::new('proposed_food')
                 ->setLabel('Nourriture proposée'),
             TextField::new('proposed_quantity')
-                ->setLabel('Quantité proposée'),
+                ->setLabel('Quantité proposée'), 
+            TextField::new('health')
+                ->setLabel('Etat de santé animal'),   
             TextField::new('details')
-                ->setLabel('Détails'),
+                ->setLabel('Commentaires sur l\'habitat'),
             DateTimeField::new('timestamp')
             ->setFormTypeOption('disabled', true)
         ];
