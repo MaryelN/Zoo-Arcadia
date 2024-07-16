@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Le Zoo et les Animaux{% endblock %}
+
+
 {% block body %}
 <body>
     <section class="gallery-hero">
@@ -13,44 +16,34 @@
             </div>
         </div>
     </section>
-    <section class="gallery__animal">
-        <div class="text-center mt-3 py-3">
-            <h1>Découvrez des animaux extraordinaires !</h1>
+    <section class="gallery__filter">
+        <div class="text-center mt-3 py-5">
+            <h2>Découvrez des animaux extraordinaires !</h2>
         </div>
-        <div class="container form-control">
-            <div class="col form-control text-center">
-                <h2>Filtrer</h2>
-                <div class="container d-flex justify-center align-items-center">
-                    <div class="row justify-center align-items-center">
-                        <h4>Nom</h4>
-                    </div>
-                    <div class="row m-5">
-                        <h6>Habitat</h6>
-                        <h6>Race</h6>
-                    </div>
-                    <button type="submit" class="btn btn-primary -100 mt-5">Filtrer</button>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row row-cols-lg-3">
-                    <div class="col px-3 py-3 d-flex justify-content-center">
-                        <div class="gallery__card" style="width: 18rem; height: 30rem;">
-                            <div class="card-body">
-                                <h5>Nom</h5>
-                                <img src="{{ asset('images/gallery/animals/animal1.jpg') }}" class="card-img-top" alt="...">
-                                <ul class="card-text mt-2">
-                                    <li>Description</li>
-                                    <li>Habitat</li>
-                                    <li>Race</li>
-                                </ul>
-                            </div>
+        <div class="container form-control text-center ">
+            <h4>Chercher un Animal</h4>
+            <div class="col text-center mt-3">
+                    <div class="row d-flex justify-center align-items-center">
+                        <div class="col">
+                            <p>Chercher par prénom</p>
                         </div>
+                        <div class="col">
+                            <p>Habitat</p>
+                        </div>
+                        <div class="col">
+                            <p>Race</p>
+                        </div>  
                     </div>
+                    <button type="submit" class="btn btn-primary -100 mt-5">CHERCHER</button>
                 </div>
             </div>
         </section>
-    </body>    
-            
-            {% endblock %}
+        <section>
+            {% include '_partials/_habitat-cards.html.twig' %}
+        </section>
+        <section>
+            {% include '_partials/_animal-cards.html.twig' %}
+        </section>
+{% endblock %}
             
             
