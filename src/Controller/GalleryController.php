@@ -34,7 +34,7 @@ class GalleryController extends AbstractController
     }
 
     #[Route('/{id}', name:'habitat')]
-    public function details(Habitat $habitat): Response
+    public function details(habitat $habitat): Response
     {                
         return $this->render('gallery/habitat.html.twig', [
             'controller_name' => 'GalleryController',
