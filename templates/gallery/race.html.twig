@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détails de l'race {{ race.label }}{% endblock %}
+{% block body %}
+  <section>
+    <a href="{{ path('app_gallery_index') }}" class="btn btn-primary mx-auto">Retour</a>
+    <div class="container">
+      <h1>Decouvrez l'race</h1>
+      <div class="card" style="width: 20rem;">
+        <img src="https://www.w3.org/html/logo/downloads/HTML5_sticker.png" class="card-img-top" alt="Accroche HTML">
+        <div class="card-body">
+          <h2 class="card-title">{{ race.label }}</h2>
+          <p class="card-text">{{ race.description }}</p>
+          <a href="{{ path('app_gallery_index') }}" class="btn btn-primary">Retour</a> 
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
