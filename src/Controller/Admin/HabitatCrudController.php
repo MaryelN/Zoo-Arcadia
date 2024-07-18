@@ -6,8 +6,10 @@ use App\Entity\Habitat;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HabitatCrudController extends AbstractCrudController
 {
@@ -30,12 +32,16 @@ class HabitatCrudController extends AbstractCrudController
             IdField::new('id')
             ->hideOnForm()
             ->hideOnIndex(),
-
             TextField::new('name')
                 ->setLabel('Nom'),
-
             TextField::new('description')
                 ->setLabel('Détails'),
+            TextField::new('imageFile')
+                ->setFormType(VichImageType::class)->onlyOnForms(),
+            TextField::new('imageName')
+                ->onlyOnIndex(),
+            IntegerField::new('imageSize')
+                ->onlyOnIndex(),
             ];
     }
 

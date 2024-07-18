@@ -6,3 +6,7 @@ vich_uploader:
             uri_prefix: /images/animaux
             upload_destination: '%kernel.project_dir%/public/images/animaux'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        habitat_images:
+            uri_prefix: /uploads/habitat_images
+            upload_destination: '%kernel.project_dir%/public/uploads/habitat_images'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
