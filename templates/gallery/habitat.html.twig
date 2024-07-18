@@ -2,17 +2,23 @@
 {% block title %}Détails de l'habitat {{ habitat.name }}{% endblock %}
 {% block body %}
   <section>
-    <a href="{{ path('app_gallery_index') }}" class="btn btn-primary mx-auto">Retour</a>
+    <a href="{{ path('app_gallery_index') }}" class="btn btn-primary m-5">Retour</a>
     <div class="container">
-      <h1>Decouvrez l'habitat</h1>
-      <div class="card" style="width: 20rem;">
+      <h2>Decouvrez l'habitat</h2>
+      <div class="card" style="">
         <img src="https://www.w3.org/html/logo/downloads/HTML5_sticker.png" class="card-img-top" alt="Accroche HTML">
         <div class="card-body">
           <h2 class="card-title">{{ habitat.name }}</h2>
           <p class="card-text">{{ habitat.description }}</p>
-          <a href="{{ path('app_gallery_index') }}" class="btn btn-primary">Retour</a> 
         </div>
       </div>
     </div>
+  </section>
+  <section>
+    <div class="container m-5 mx-auto text-center">
+      <h2>Animals in this habitat</h2>
+      <div class="row">
+        {{ include('_partials/_animal-cards.html.twig') }}
+      </div>
   </section>
   {% endblock %}  

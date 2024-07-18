@@ -1,12 +1,15 @@
-<div class="container">
-  {# <h1>{{animal.name}}</h1> #}
-  <div class="card" style="width: 20rem;">
-      <img src="https://www.w3.org/html/logo/downloads/HTML5_sticker.png" class="card-img-top" alt="Accroche HTML">
+{% for animal in animals %}
+  <div class="col-4">
+    <div class="card" style="width: 20rem;">
+      <img src="{{ vich_uploader_asset(animal.image, 'imageFile') }}" alt="{{ animal.name }}" height="150" />
       <div class="card-body">
-          <h2 class="card-title">Titre</h2>
-          <h3 class="card-subtitle">Sous titre</h3>
-          <p class="card-text">Du texte sous le titre dans le corps de carte</p>
-          <a href="#" class="btn btn-primary">Un lien</a>
+        <h2 class="card-title">{{ animal.name }}</h2>
+        <h4 class="card-subtitle">Race : {{ animal.race }}</h4>
+        {# <a href="{{ path('app_gallery_animal', {id: animal.id}) }}" class="btn btn-primary">Voir l'animal</a> #}
       </div>
+    </div>
   </div>
-</div>
+  {% else %}
+    <div class="col-12">
+      <p>No animals in this habitat</p>
+  {% endfor %}

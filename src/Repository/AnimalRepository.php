@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\Habitat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,15 @@ class AnimalRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Animal::class);
+    }
+
+    public function findByHabitat(Habitat $habitat): array
+    {
+        return $this->createQueryBuilder('animal')
+            ->andWhere('animal.habitat = :habitat')
+            ->setParameter('habitat', $habitat)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

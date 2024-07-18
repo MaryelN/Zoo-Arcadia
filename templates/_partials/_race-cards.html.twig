@@ -1,0 +1,16 @@
+<div class="index-habitat">
+  <div class="row g-0 pt-5">
+      <div class="title-box col-6 col-md-3 col-xl-3 text-center mx-auto">
+          <h2 class="text-center">Découvrez les habitats</h2>
+      </div>
+  </div>
+  <div class="d-flex justify-content-center index-habitat__cards">
+      {% for race in races %}
+          <div class="index-habitat__card card card-1 m-3" style="width: 18rem;">
+              <div class="card-body">
+                  <a href="{{ path('app_gallery_habitat',{id: race.id}) }}"><h2 class="card-text text-uppercase">{{ race.label }}</h2></a>
+              </div>
+          </div>
+          {% endfor %}
+  </div>
+</div>

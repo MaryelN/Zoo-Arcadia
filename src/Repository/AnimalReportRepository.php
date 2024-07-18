@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\AnimalReport;
+use App\Entity\Habitat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

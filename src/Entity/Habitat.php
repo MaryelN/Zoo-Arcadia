@@ -24,7 +24,7 @@ class Habitat
     /**
      * @var Collection<int, Animal>
      */
-    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'Habitat_id')]
+    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'Habitat')]
     private Collection $animals;
 
     public function __construct()
@@ -73,7 +73,7 @@ class Habitat
     {
         if (!$this->animals->contains($animal)) {
             $this->animals->add($animal);
-            $animal->setHabitatId($this);
+            $animal->setHabitat($this);
         }
 
         return $this;
@@ -83,8 +83,8 @@ class Habitat
     {
         if ($this->animals->removeElement($animal)) {
             // set the owning side to null (unless already changed)
-            if ($animal->getHabitatId() === $this) {
-                $animal->setHabitatId(null);
+            if ($animal->getHabitat() === $this) {
+                $animal->setHabitat(null);
             }
         }
 
