@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
 use App\Entity\AnimalReport;
-use App\Entity\Habitat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,28 +17,14 @@ class AnimalReportRepository extends ServiceEntityRepository
         parent::__construct($registry, AnimalReport::class);
     }
 
-//    /**
-//     * @return AnimalReport[] Returns an array of AnimalReport objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?AnimalReport
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findLatestAnimalReport(Animal $animal): ?AnimalReport
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.animal_id = :animal')
+            ->setParameter('animal', $animal)
+            ->orderBy('r.timestamp', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

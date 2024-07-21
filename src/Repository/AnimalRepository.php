@@ -26,28 +26,35 @@ class AnimalRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-//    /**
-//     * @return Animal[] Returns an array of Animal objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findAllWithImages(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.images', 'i')
+            ->addSelect('i')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Animal
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        /**
+     * Find an animal by its ID with its related entities.
+     *
+     * @param int $id
+     * @return Animal|null
+     */
+    public function findAnimalWithDetails(int $id): ?Animal
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.images', 'i')
+            ->addSelect('i')
+            ->leftJoin('a.animalReports', 'r')
+            ->addSelect('r')
+            ->leftJoin('a.race', 'race')
+            ->addSelect('race')
+            ->leftJoin('a.habitat', 'habitat')
+            ->addSelect('habitat')
+            ->where('a.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

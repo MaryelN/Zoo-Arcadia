@@ -38,7 +38,7 @@ class ImageCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnForm()
                 ->hideOnIndex(),
-            AssociationField::new('animal_id')
+            AssociationField::new('animal')
                 ->setLabel('Nom de l\'animal')
                 ->setCrudController(AnimalCrudController::class)
                 ->setHelp('Choisissez l\'animal auquel cette image est associée'),
@@ -47,8 +47,8 @@ class ImageCrudController extends AbstractCrudController
                 ->onlyOnForms(),
             ImageField::new('imageName')
                 ->setBasePath($animalsImagePath)
-                ->setUploadDir('public/build/images/animaux')
-                ->onlyOnForms(),
+                ->setUploadDir('public/uploads/animals')
+                ->hideOnForm(),
             IntegerField::new('imageSize')
                 ->hideOnForm()
                 ->hideOnIndex()

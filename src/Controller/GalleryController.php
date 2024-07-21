@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
+use App\Entity\AnimalReport;
 use App\Entity\Habitat;
 use App\Entity\Race;
+use App\Repository\AnimalReportRepository;
 use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
 use App\Repository\RaceRepository;
@@ -89,6 +92,29 @@ class GalleryController extends AbstractController
             'controller_name' => 'GalleryController',
             'title'=>'Animaux',
             'animals'=>$animals
+        ]);
+    }
+
+    #[Route('/animal/{id}', name:'animal_details')]
+    public function animalDetails(
+        Animal $animal,
+        AnimalRepository $animalRepository,
+        AnimalReportRepository $animalReportRepository,
+        int $id
+        ): Response
+    {
+        $animal = $animalRepository->find($id);
+        if (!$animal) {
+            throw $this->createNotFoundException('Animal not found');
+        }
+
+        $latestReport = $animalReportRepository->findLatestAnimalReport($animal);
+
+        return $this->render('gallery/animal-details.html.twig', [
+            'controller_name' => 'GalleryController',
+            'title'=>'Animal',
+            'animal'=>$animal,
+            'latestReport'=>$latestReport
         ]);
     }
 }

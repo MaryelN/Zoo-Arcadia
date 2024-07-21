@@ -111,6 +111,7 @@ class AnimalReport
     {
         return $this->proposed_food;
     }
+    
 
     public function getHealth(): ?string
     {

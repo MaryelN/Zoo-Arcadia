@@ -37,7 +37,8 @@ class HabitatCrudController extends AbstractCrudController
             TextField::new('description')
                 ->setLabel('Détails'),
             TextField::new('imageFile')
-                ->setFormType(VichImageType::class)->onlyOnForms(),
+                ->setFormType(VichImageType::class)
+                ->onlyOnForms(),
             TextField::new('imageName')
                 ->onlyOnIndex(),
             IntegerField::new('imageSize')

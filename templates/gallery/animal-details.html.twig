@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{# {% block title %}Détails de l'animal {{ animal.name }}{% endblock %} #}
+{% block body %}
+    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary mx-auto">Retour</a>
+    <section>
+        <div class="container">
+            <h1>Carrousel</h1>
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                <!-- Indicateurs -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+  
+                <!-- Carrousel -->
+                <div class="carousel-inner">
+                  {% if animal.images|length > 0 %}
+                    {% for image in animal.images %}
+                      <div class="carousel-item active d-flex justify-content-center">
+                        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ animal.name }}" style="height : 30rem">
+                        {% endfor %}
+                        <div class="carousel-caption d-none d-md-block">
+                          <h1>{{animal.name}}</h1>
+                        </div>
+                      </div>
+                  {% else %}
+                    <p>No image available</p>
+                  {% endif %}
+  
+                
+            </div>
+  
+            <!-- Contrôles -->
+            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h1>Carte</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ animal.name }}</h2>
+                    <h4 class="card-subtitle my-2"><strong>Race :</strong> {{ animal.race }}</h4>
+                    <h4 class="card-subtitle"><strong>Habitat :</strong> {{ animal.habitat }}</h4>
+                    <p class="card-text">{{ animal.details }}</p>
+                    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary">Retour</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+          <div class="card my-5">
+            <h2 class="text-center mt-5">Control veterinaire</h2>
+                <div class="card-body">
+                  {% if latestReport %}
+                    <h5><strong>Aliments proposés :</strong> {{ latestReport.proposedFood }}</h5>
+                    <h5><strong>Quantité proposée:</strong> {{ latestReport.proposedQuantity }}</h5>
+                    <h5><strong>Habitat:</strong> {{ latestReport.details }}</h5>
+                    <h5><strong>Santé:</strong> {{ latestReport.health }}</h5>
+                    <h5 class="mt-5"><strong>Nom du vétérinaire:</strong> {{ latestReport.userId.name }} {{ latestReport.userId.lastname }}</h5>
+                    <h5><strong>Date de report:</strong> {{ latestReport.timestamp|date('Y-m-d H:i:s') }}</h5>
+                    {% else %}
+                    <p>Pas de rapport disponible</p>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
