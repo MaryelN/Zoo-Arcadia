@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Animal;
 use App\Entity\Habitat;
+use App\Entity\Race;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -26,33 +27,39 @@ class AnimalRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findAllWithImages(): array
+
+    public function findByRace(Race $race): array
     {
-        return $this->createQueryBuilder('a')
-            ->leftJoin('a.images', 'i')
-            ->addSelect('i')
+        return $this->createQueryBuilder('animal')
+            ->andWhere('animal.race = :race')
+            ->setParameter('race', $race)
             ->getQuery()
             ->getResult();
     }
 
-        /**
-     * Find an animal by its ID with its related entities.
-     *
-     * @param int $id
-     * @return Animal|null
-     */
+
+    public function findAllWithImages(): array
+    {
+        return $this->createQueryBuilder('animal')
+            ->leftJoin('animal.images', 'image')
+            ->addSelect('image')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     public function findAnimalWithDetails(int $id): ?Animal
     {
-        return $this->createQueryBuilder('a')
-            ->leftJoin('a.images', 'i')
-            ->addSelect('i')
-            ->leftJoin('a.animalReports', 'r')
-            ->addSelect('r')
-            ->leftJoin('a.race', 'race')
+        return $this->createQueryBuilder('animal')
+            ->leftJoin('animal.images', 'image')
+            ->addSelect('image')
+            ->leftJoin('animal.animalReports', 'report')
+            ->addSelect('report')
+            ->leftJoin('animal.race', 'race')
             ->addSelect('race')
-            ->leftJoin('a.habitat', 'habitat')
+            ->leftJoin('animal.habitat', 'habitat')
             ->addSelect('habitat')
-            ->where('a.id = :id')
+            ->where('animal.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();

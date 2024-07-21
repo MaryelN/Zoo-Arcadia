@@ -16,27 +16,16 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
-    /**
-        * @return Comment[] Returns an array of validated Comments
-        */
+
     public function findLatestComment($limit = 3): array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.validation = true')
-            ->orderBy('c.timestamp', 'DESC')
+        return $this->createQueryBuilder('comment')
+            ->andWhere('comment.validation = true')
+            ->orderBy('comment.timestamp', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
         ;
     }
 
-//    public function findOneBySomeField($value): ?Comment
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
