@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {# {% block title %}Détails de l'animal {{ animal.name }}{% endblock %} #}
 {% block body %}
-    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary mx-auto">Retour</a>
+    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary mx-auto mt-3">Retour</a>
     <section>
         <div class="container">
             <h1>Carrousel</h1>
@@ -48,10 +48,16 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">{{ animal.name }}</h2>
-                    <h4 class="card-subtitle my-2"><strong>Race :</strong> {{ animal.race }}</h4>
-                    <h4 class="card-subtitle"><strong>Habitat :</strong> {{ animal.habitat }}</h4>
+                    <h4 class="card-subtitle my-5">
+                      <strong>Race :</strong> 
+                      <a href="{{ path('app_gallery_race', {id: animal.race.id}) }}" class="btn btn-2">{{ animal.race }}</a>
+                    </h4>
+                    <h4 class="card-subtitle">
+                      <strong>Habitat :</strong> 
+                      <a href="{{ path('app_gallery_habitat', {id: animal.habitat.id}) }}" class="btn btn-2">{{ animal.habitat }}</a>
+                    </h4>
                     <p class="card-text">{{ animal.details }}</p>
-                    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary">Retour</a>
+                    <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary">Retour à la liste des animaux</a>
                 </div>
             </div>
         </div>

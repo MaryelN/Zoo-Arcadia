@@ -1,5 +1,8 @@
 <div class="container">
   <div class=" d-flex justify-content-center flex-wrap row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5">
+    {% if animals is empty %}
+      <p>Pas d'animaux trouvés</p>
+  {% else %}
     {% for animal in animals %}
       <div class="content">
       <div class="col card m-1" style="width: 20rem;">
@@ -8,7 +11,7 @@
               <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ animal.name }}" style:"width : 50rem">
             {% endfor %}
           {% else %}
-            <p>No image available</p>
+            <p>Aucune image trouvée</p>
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ animal.name }}</h5>
@@ -18,5 +21,6 @@
         </div>
       </div>
     {% endfor %}
+  {% endif %}
   </div>
 </div>

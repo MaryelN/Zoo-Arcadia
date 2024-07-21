@@ -5,13 +5,12 @@
     {% block body %}
       <section>
       <div class="race__hero">
-        <a href="{{ path('app_gallery_index') }}" class="btn btn-primary m-5">Retour</a>
+        <a href="{{ path('app_gallery_index') }}" class="btn btn-2 m-5">Retour</a>
       </div>
         <div class="container text-center">
           <h2>Decouvrez la race des {{ race.label }}</h2>
           <div class="card my-5" style="">
             <div class="habitat__image m-auto">
-              {# <img src="{{ vich_uploader_asset(race, 'imageFile') }}"  class="card-img-top" alt="Habitat" {{ habitat.name }} "Image" style="width : 700px"> #}
             </div>
             <div class="card-body text-center">
               <h2 class="card-title">{{ race.label }}</h2>

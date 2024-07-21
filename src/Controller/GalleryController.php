@@ -69,6 +69,7 @@ class GalleryController extends AbstractController
         ): Response
     {               
         $race = $raceRepository->find($id); 
+
         if (!$race) {
             throw $this->createNotFoundException('Race not found');
         }
@@ -100,21 +101,26 @@ class GalleryController extends AbstractController
         Animal $animal,
         AnimalRepository $animalRepository,
         AnimalReportRepository $animalReportRepository,
+        RaceRepository $raceRepository,
         int $id
         ): Response
     {
         $animal = $animalRepository->find($id);
+        
         if (!$animal) {
             throw $this->createNotFoundException('Animal not found');
         }
 
         $latestReport = $animalReportRepository->findLatestAnimalReport($animal);
 
+        $race = $raceRepository->find($animal->getRace());
+
         return $this->render('gallery/animal-details.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Animal',
             'animal'=>$animal,
-            'latestReport'=>$latestReport
+            'latestReport'=>$latestReport,
+            'race'=>$race
         ]);
     }
 }
