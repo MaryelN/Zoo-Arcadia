@@ -20,7 +20,8 @@ class UserFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 5; $i++) {
+
             $user = new User();
             $user->setEmail($faker->email);
             $user->setRoles(['ROLE_USER']);
@@ -32,8 +33,9 @@ class UserFixtures extends Fixture
             $user->setTimestamp(new \DateTimeImmutable());
 
             $manager->persist($user);
+            $this->addReference('user_' . $i, $user); 
         }
-
+            //veterinary
             $user = new User();
             $user->setEmail($faker->email);
             $user->setRoles(['ROLE_VETERINARY']);
@@ -45,7 +47,9 @@ class UserFixtures extends Fixture
             $user->setTimestamp(new \DateTimeImmutable());
 
             $manager->persist($user);
-
+            $this->addReference('user_veterinary', $user);
+            
+            //admin
             $user = new User();
             $user->setEmail('arcadia@zoo.com');
             $user->setRoles(['ROLE_ADMIN']);
@@ -57,6 +61,7 @@ class UserFixtures extends Fixture
             $user->setTimestamp(new \DateTimeImmutable());
 
             $manager->persist($user);
+            $this->addReference('user_admin', $user);
 
 
         $manager->flush();
