@@ -42,22 +42,32 @@ class DashboardController extends AbstractDashboardController
     {
         $menuItems[] = MenuItem::linkToRoute('Retour au Site', 'fa fa-home', 'app_index');
         $menuItems[] = MenuItem::section('Site Arcadia Zoo');
+        $menuItems[] = MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
     
         if ($this->isGranted('ROLE_ADMIN')) {
             $menuItems[] = MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
             $menuItems[] = MenuItem::linkToCrud('Horaires', 'fa fa-clock', Schedule::class);
-        } 
-    
-        $MenuItem[] = MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
-        $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
-        $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
-        $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
-        $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
-        
-        $menuItems[] = MenuItem::section('Reports');
-        $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
-        $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa-solid fa-shield-dog', AnimalReport::class);
+            $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
+            $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
+            $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
+            $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
+            $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
+            $menuItems[] = MenuItem::section('Reports');
+            $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
+            $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa-solid fa-shield-dog', AnimalReport::class);
+        } elseif ($this->isGranted('ROLE_VETERINARY')) {
+            $menuItems[] = MenuItem::section('Reports');
+            $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
+            $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa-solid fa-shield-dog', AnimalReport::class);
+        } elseif ($this->isGranted('ROLE_USER')) {
+            $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
+            $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
+            $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
+            $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
+            $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
+            $menuItems[] = MenuItem::section('Reports');
+            $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
+        }
         
         return $menuItems;
     }
