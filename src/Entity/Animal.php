@@ -22,7 +22,7 @@ class Animal
     private ?string $details = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $votes = null;
+    private ?int $votes = 0;
 
     #[ORM\ManyToOne(inversedBy: 'Animals')]
     #[ORM\JoinColumn(nullable: false)]
@@ -201,7 +201,7 @@ class Animal
         return $this->votes;
     }
 
-    public function setVotes(?int $votes): static
+    public function setVotes(?int $votes): self
     {
         $this->votes = $votes;
 

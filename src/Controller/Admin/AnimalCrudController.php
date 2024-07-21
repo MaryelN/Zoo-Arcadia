@@ -7,8 +7,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\Types\Integer;
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -42,6 +43,10 @@ class AnimalCrudController extends AbstractCrudController
         AssociationField::new('race')
             ->setLabel('race')
             ->setHelp('Choisissez la race de l\'animal'),
+        IntegerField::new('votes')
+            ->setLabel('Nombre de clicks')
+            ->setHelp('Nombre de votes pour cet animal')
+            ->setFormTypeOption('disabled', true)
         ];
     }
 }

@@ -11,6 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\{ChoiceField, DateTimeField, IdField, 
 use Symfony\Component\Form\Extension\Core\Type\{PasswordType, RepeatedType};
 use Symfony\Component\Form\{FormBuilderInterface, FormEvent, FormEvents};
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
+
 
 class UserCrudController extends AbstractCrudController
 {

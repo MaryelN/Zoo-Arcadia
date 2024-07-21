@@ -10,7 +10,9 @@ use App\Repository\AnimalReportRepository;
 use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
 use App\Repository\RaceRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -122,5 +124,14 @@ class GalleryController extends AbstractController
             'latestReport'=>$latestReport,
             'race'=>$race
         ]);
+    }
+
+    #[Route('/animal/{id}/votes', name: 'animal_votes')]
+    public function incrementVotes(Animal $animal, EntityManagerInterface $entityManager): RedirectResponse
+    {
+        $animal->setVotes($animal->getVotes() + 1);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_gallery_animal_details', ['id' => $animal->getId()]);
     }
 }
