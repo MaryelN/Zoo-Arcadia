@@ -3,49 +3,26 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
+
     <section class="contact">
-        <div class="row d-flex justify-content-center align-items-center h-90 mt-5">
+        <div class="container d-flex flex-column align-items-center">
+            {% for message in app.flashes('succes') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <form action="POST">
-                    <!-- Name input -->
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text" id="form4Example1" class="form-control" />
-                        <label class="form-label" for="form4Example1">Name</label>
-                    </div>
-                    
-                    <!-- Email input -->
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="form4Example2" class="form-control" />
-                        <label class="form-label" for="form4Example2">Email address</label>
-                    </div>
-                    
-                    <!-- Message input -->
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-                        <label class="form-label" for="form4Example3">Message</label>
-                    </div>
-                    
-                    <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center mb-4">
-                        <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form4Example4"
-                        checked
-                        />
-                        <label class="form-check-label" for="form4Example4">
-                            Send me a copy of this message
-                        </label>
-                    </div>
-                    
-                    <!-- Submit button -->
-                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Send</button>
-                </form>
+                <h2 class="text-center">Contactez-nous</h2>
+                {{ form(form) }}
             </div>
         </div>
+    </section>
+    <section>
             <div class="contact__image my-5">
                 <img src={{ asset('images/heros/lizard.jpg') }} alt="image d'animal">
             </div>
     </section>
+
 {% endblock %}
