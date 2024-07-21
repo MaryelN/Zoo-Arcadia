@@ -1,7 +1,11 @@
 {% for animal in animals %}
   <div class="col-4">
     <div class="card" style="width: 20rem;">
-      <img src="{{ vich_uploader_asset(animal.image, 'imageFile') }}" alt="{{ animal.name }}" height="150" />
+      {# {% if animal.image %}
+        <img src="{{ vich_uploader_asset(animal.image, 'imageFile') }}" alt="{{ animal.name }}">
+    {% else %} #}
+        {# <p>No image available</p>
+    {% endif %} #}
       <div class="card-body">
         <h2 class="card-title">{{ animal.name }}</h2>
         <h4 class="card-subtitle">Race : {{ animal.race }}</h4>

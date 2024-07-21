@@ -6,8 +6,10 @@
     <div class="container">
       <h2>Decouvrez l'habitat</h2>
       <div class="card" style="">
-        <img src="https://www.w3.org/html/logo/downloads/HTML5_sticker.png" class="card-img-top" alt="Accroche HTML">
-        <div class="card-body">
+        <div class="habitat__image m-auto">
+          <img src="{{ vich_uploader_asset(habitat, 'imageFile') }}"  class="card-img-top" alt="Habitat" {{ habitat.name }} "Image" style="width : 700px">
+        </div>
+        <div class="card-body text-center">
           <h2 class="card-title">{{ habitat.name }}</h2>
           <p class="card-text">{{ habitat.description }}</p>
         </div>

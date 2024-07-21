@@ -32,7 +32,7 @@ class AnimalReport
 
     #[ORM\ManyToOne(inversedBy: 'AnimalReports')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user_id = null;
+    private ?User $user_id = null;
 
     #[ORM\Column(length: 150)]
     private ?string $health = null;

@@ -21,20 +21,17 @@ class Animal
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $details = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $votes = null;
+
     #[ORM\ManyToOne(inversedBy: 'Animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Habitat $habitat_id = null;
+    private ?Habitat $habitat = null;
 
     #[ORM\ManyToOne(inversedBy: 'Animals')]
-    private ?Race $race_id = null;
+    private ?Race $race = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Animals', targetEntity: Image::class, cascade: ['persist', 'remove'])]
-    private ?Image $image_id = null;
-
-    /**
-     * @var Collection<int, Image>
-     */
-    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'Animal_id', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Image::class, mappedBy:'animal', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $images;
 
     /**
@@ -48,9 +45,6 @@ class Animal
      */
     #[ORM\OneToMany(targetEntity: FoodReport::class, mappedBy: 'Animal_id', orphanRemoval: true)]
     private Collection $foodReports;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $votes = null;
 
     public function __construct()
     {
@@ -88,38 +82,26 @@ class Animal
         return $this;
     }
 
-    public function getHabitatId(): ?Habitat
+    public function getHabitat(): ?Habitat
     {
-        return $this->habitat_id;
+        return $this->habitat;
     }
 
-    public function setHabitatId(?Habitat $habitat_id): static
+    public function setHabitat(?Habitat $habitat): static
     {
-        $this->habitat_id = $habitat_id;
+        $this->habitat = $habitat;
 
         return $this;
     }
 
-    public function getRaceId(): ?Race
+    public function getRace(): ?Race
     {
-        return $this->race_id;
+        return $this->race;
     }
 
-    public function setRaceId(?Race $race_id): static
+    public function setRace(?Race $race): static
     {
-        $this->race_id = $race_id;
-
-        return $this;
-    }
-
-    public function getImageId(): ?Image
-    {
-        return $this->image_id;
-    }
-
-    public function setImageId(?Image $image_id): self
-    {
-        $this->image_id = $image_id;
+        $this->race = $race;
 
         return $this;
     }
@@ -136,7 +118,7 @@ class Animal
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
-            $image->setAnimalId($this);
+            $image->setAnimal($this);
         }
 
         return $this;
@@ -146,8 +128,8 @@ class Animal
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getAnimalId() === $this) {
-                $image->setAnimalId(null);
+            if ($image->getAnimal() === $this) {
+                $image->setAnimal(null);
             }
         }
 
@@ -213,11 +195,6 @@ class Animal
 
         return $this;
     }
-    
-    public function __toString(): string
-    {
-        return $this->name ?? '';
-    }
 
     public function getVotes(): ?int
     {
@@ -229,5 +206,10 @@ class Animal
         $this->votes = $votes;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name ?? '';
     }
 }
