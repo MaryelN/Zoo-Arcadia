@@ -81,14 +81,14 @@ class GalleryController extends AbstractController
     }
 
     #[Route('/animal', name:'animal')]
-    public function animal(AnimalRepository $animalRepository, Habitat $habitat): Response
+    public function animal(AnimalRepository $animalRepository): Response
     {
         $animals = $animalRepository->findAll();
 
         return $this->render('gallery/animal.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Animaux',
-            'animals'=>$animals,
+            'animals'=>$animals
         ]);
     }
 }

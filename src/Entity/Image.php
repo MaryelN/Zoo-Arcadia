@@ -31,6 +31,11 @@ class Image
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Images')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?animal $animal = null;
+    
+
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
@@ -43,10 +48,6 @@ class Image
         $this->updatedAt = new \DateTimeImmutable();
     }
 
-    #[ORM\ManyToOne(inversedBy: 'Images')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?animal $animal_id = null;
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -121,14 +122,14 @@ class Image
         return $this;
     }
 
-    public function getAnimalId(): ?Animal
+    public function getAnimal(): ?Animal
     {
-        return $this->animal_id;
+        return $this->animal;
     }
 
-    public function setAnimalId(?Animal $animal_id): static
+    public function setAnimal(?Animal $animal): static
     {
-        $this->animal_id = $animal_id;
+        $this->animal = $animal;
 
         return $this;
     }
