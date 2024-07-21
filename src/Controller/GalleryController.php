@@ -34,18 +34,19 @@ class GalleryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name:'habitat')]
-    public function details(habitat $habitat, 
-                            HabitatRepository $habitatRepository, 
-                            AnimalRepository $animalRepository, 
-                            int $id): Response
+    #[Route('/habitat/{id}', name:'habitat')]
+    public function habitatDetails(
+        habitat $habitat, 
+        HabitatRepository $habitatRepository, 
+        AnimalRepository $animalRepository, 
+        int $id
+        ): Response
     {            
         $habitat = $habitatRepository->find($id);
         if (!$habitat) {
             throw $this->createNotFoundException('Habitat not found');
         }
 
-        // Get animals for the habitat
         $animals = $animalRepository->findByHabitat($habitat);
 
         return $this->render('gallery/habitat.html.twig', [
@@ -55,13 +56,39 @@ class GalleryController extends AbstractController
             'animals'=> $animals,
         ]);
     }
-    #[Route('/{id}', name:'race')]
-    public function groups(race $race): Response
-    {                
+
+    #[Route('/race/{id}', name:'race')]
+    public function raceDetails(
+        race $race,
+        RaceRepository $raceRepository,
+        AnimalRepository $animalRepository,
+        int $id
+        ): Response
+    {               
+        $race = $raceRepository->find($id); 
+        if (!$race) {
+            throw $this->createNotFoundException('Race not found');
+        }
+
+        $animals = $animalRepository->findBy(['race' => $race]);
+
         return $this->render('gallery/race.html.twig', [
             'controller_name' => 'GalleryController',
-            'title'=>'Habitat',
+            'title'=>'Race',
             'race'=>$race,
+            'animals' => $animals,
+        ]);
+    }
+
+    #[Route('/animal', name:'animal')]
+    public function animal(AnimalRepository $animalRepository, Habitat $habitat): Response
+    {
+        $animals = $animalRepository->findAll();
+
+        return $this->render('gallery/animal.html.twig', [
+            'controller_name' => 'GalleryController',
+            'title'=>'Animaux',
+            'animals'=>$animals,
         ]);
     }
 }
