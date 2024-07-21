@@ -3,16 +3,26 @@
 namespace App\Controller\Admin;
 
 use App\Entity\AnimalReport;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Faker\Provider\ar_EG\Text;
+use Symfony\Bundle\SecurityBundle\Security as SecurityBundleSecurity;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class AnimalReportCrudController extends AbstractCrudController
 {
+    private SecurityBundleSecurity $security;
+
+    public function __construct(SecurityBundleSecurity $security)
+    {
+        $this->security = $security;
+    }
+
     public static function getEntityFqcn(): string
     {
         return AnimalReport::class;
@@ -34,7 +44,10 @@ class AnimalReportCrudController extends AbstractCrudController
                 ->hideOnForm()
                 ->hideOnIndex(),
             AssociationField::new('user_id')
-                ->setLabel('Nom de l\'utilisateur'),
+                ->setLabel('Nom de l\'utilisateur')
+                ->setFormTypeOption('disabled', true)
+                ->hideOnIndex()
+                ->hideWhenUpdating(),
             AssociationField::new('animal_id')
                 ->setLabel('Nom de l\'animal'),
             TextField::new('proposed_food')
@@ -46,8 +59,20 @@ class AnimalReportCrudController extends AbstractCrudController
             TextField::new('details')
                 ->setLabel('Commentaires sur l\'habitat'),
             DateTimeField::new('timestamp')
-            ->setFormTypeOption('disabled', true)
+                ->setLabel('Date de création')
+                ->setFormTypeOption('disabled', true)
         ];
+    }
+
+    public function createEntity(string $entityFqcn)
+    {
+        $animalReport = new AnimalReport();
+
+        /** @var User $user */
+        $user = $this->security->getUser();
+        $animalReport->setUserId($user);
+
+        return $animalReport;
     }
     
 }
