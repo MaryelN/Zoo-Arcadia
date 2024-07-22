@@ -1,21 +1,27 @@
 # Arcadia Zoo Application web
 
 ## Description du projet
+Application web pour le Zoo Arcadia, cette application web améliore l'engagement des visiteurs en offrant une plateforme interactive pour explorer les différentes offres du zoo. 
+L'application permet aux visiteurs de découvrir des informations détaillées sur les animaux du zoo, leur état de santé, les services disponibles, ainsi que les horaires d'ouverture. 
 
-Arcadia est un zoo situé en France près de la forêt de Brocéliande, en Bretagne, depuis 1960. Le zoo abrite une grande variété d'animaux répartis dans différents habitats (savane, jungle, marais) et veille méticuleusement à leur bien-être. Chaque jour, plusieurs vétérinaires réalisent des contrôles rigoureux pour garantir la santé des animaux, et toute la nourriture est soigneusement mesurée selon les rapports vétérinaires. Grâce à une gestion financière solide, le zoo prospère sous la direction ambitieuse de José.
+Réalisée par DevSoft, cette solution vise à accroître la visibilité du zoo et à renforcer son image de marque grâce à une expérience numérique conviviale.
 
-Notre mission est de développer une application web permettant aux visiteurs de découvrir les animaux, leur état de santé, les services offerts ainsi que les horaires du zoo. DevSoft, l'entreprise choisie pour ce projet, s'engage à augmenter la notoriété et l'image de marque du zoo grâce à cette application.
+## Notre client
+Arcadia est un zoo situé en France, près de la forêt de Brocéliande, en Bretagne, depuis 1960. Le zoo abrite une grande variété d'animaux répartis dans différents habitats (savane, jungle, marais) et veille méticuleusement à leur bien-être. Chaque jour, plusieurs vétérinaires réalisent des contrôles rigoureux pour garantir la santé des animaux, et toute la nourriture est soigneusement mesurée selon les rapports vétérinaires. Grâce à une gestion financière solide, le zoo prospère sous la direction ambitieuse de José.
 
 ## Technologies utilisées
 
-- HTML
-- CSS
-- Bootstrap 5.3.2
-- JavaScript
-- PHP 8.2.11
-- Symfony CLI version 5.9.1
-- MySQL
-- MariaDB
+- **HTML**
+- **CSS**
+- **Bootstrap 5.3.2**
+- **JavaScript**
+- **PHP 8.2.11**
+- **Symfony CLI version 7.1**
+- **MySQL**
+- **MariaDB**
+- **Visual Studio Code** comme IDE
+- **Visual Studio Code Extension Database Client v1.3.5**
+- **MailTrap** pour le test des fonctionnalités d'envoi de courriels
 
 ## Pages principales
 
@@ -77,10 +83,10 @@ Notre mission est de développer une application web permettant aux visiteurs de
 
 ### Installations requises
 
-- PHP v.8
-- Composer
-- Symfony v.7
-- NPM
+- **PHP v.8.2**
+- **Composer**
+- **Symfony v.7**
+- **NPM**
 
 ## Exécution locale
 
@@ -90,3 +96,24 @@ Suivez les étapes suivantes pour configurer et exécuter le projet localement :
 
 ```bash
 git clone https://github.com/MaryelN/Zoo-Arcadia.git
+
+```
+2. Installez les dépendances PHP et  Node.js :
+
+```bash
+composer install
+npm install
+```
+3. Configurez votre base de données dans le fichier .env.
+4. Lancez les migrations de la base de données :
+```bash
+php bin/console doctrine:migrations:migrate
+```
+5.Démarrez le serveur Symfony :
+```bash
+symfony server:start
+```
+6.Démarrez le compilateur SCSS et JavaScript en mode watch :
+```bash
+npm run watch
+```
