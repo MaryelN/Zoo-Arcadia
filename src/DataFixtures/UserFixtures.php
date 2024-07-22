@@ -37,7 +37,7 @@ class UserFixtures extends Fixture
         }
             //veterinary
             $user = new User();
-            $user->setEmail($faker->email);
+            $user->setEmail('vboucher@hotmail.fr');
             $user->setRoles(['ROLE_VETERINARY']);
             $user->setPassword(
                 $this->passwordHasher->hashPassword($user,'password')
