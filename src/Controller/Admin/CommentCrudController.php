@@ -8,8 +8,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\Types\Integer;
 
 class CommentCrudController extends AbstractCrudController
 {
@@ -46,6 +48,9 @@ class CommentCrudController extends AbstractCrudController
             TextareaField::new('comment')
                 ->setLabel('Message')
                 ->setFormTypeOption('disabled', true),
+            IntegerField::new('rating')
+                ->setLabel('Note')
+                ->setFormTypeOption('disabled', true),    
             BooleanField::new('Validation')
                 ->setLabel('Validé')
         ];
