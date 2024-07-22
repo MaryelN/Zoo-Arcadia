@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "*",
         "fakerphp/faker": "*",
+        "symfony/apache-pack": "*",
         "symfony/console": "7.1.*",
         "symfony/dotenv": "7.1.*",
         "symfony/flex": "^2",
