@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+  {% block title %}Decouvrez la race des {{ race.label }}{% endblock %}
+
+    {% block body %}
+      <section>
+      <div class="race__hero">
+        <a href="{{ path('app_gallery_index') }}" class="btn btn-2 m-5">Retour</a>
+      </div>
+        <div class="container text-center">
+          <h2>Decouvrez la race des {{ race.label }}</h2>
+          <div class="card my-5" style="">
+            <div class="habitat__image m-auto">
+            </div>
+            <div class="card-body text-center">
+              <h2 class="card-title">{{ race.label }}</h2>
+              <p class="card-text">{{ race.description }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container m-5 mx-auto text-center">
+          <h2>Animals in this habitat</h2>
+          <div class="row">
+            {{ include('_partials/_animal-cards.html.twig') }}
+          </div>
+      </section>
+      {% endblock %}

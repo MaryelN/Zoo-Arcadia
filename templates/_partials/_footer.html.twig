@@ -1,0 +1,48 @@
+
+<footer>
+    <div class="informations py-5 px-3">
+        <div class="row">
+            <div class=" col-md-6 col-lg-4 text-center mx-auto">
+                <a href=""><span style="font-size: 3em; color: light;">
+                    <i class="fa-solid fa-location-dot"></i>
+                </span></a>
+                <p>35380 Paimpont</p>
+                <a href=""><span style="font-size: 3em; color: light;">
+                    <i class="fa-solid fa-phone"></i>
+                </span></a>
+                <p>+33 02 99 00 00 00</p>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a class="d-flex justify-content-center" href="{{ path('app_contact') }}"><button class="btn btn-3" role="button" type="button">CONTACTER</button></a>
+                <div class="my-3 d-flex justify-content-center">
+                    <a class="mx-2" href=""><span style="font-size: 3em; color: light;">
+                        <i class="fa-brands fa-facebook"></i>
+                    </span></a>
+                    <a class="mx-2" href=""><span style="font-size: 3em; color: light;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </span></a>
+                    <a class="mx-2" href=""><span style="font-size: 3em; color: light;">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </span></a>
+                </div>
+            </div>
+            <div class=" col-md-8 col-lg-4 mx-auto">
+                <h3 class="text-center py-3 mx-auto footer-box">Nos partenaires</h3>
+                <div class="d-flex justify-content-center mt-4">
+                    <a class="mx-2" href=""><img src={{ asset('images/logos/2.png') }} height="100" class="partner" alt="logo partenaire"></a>
+                    <a class="mx-2" href=""><img src={{ asset('images/logos/3.png') }} height="100" class="partner" alt="logo partenaire"></a>
+                    <a class="mx-2" href=""><img src={{ asset('images/logos/4.png') }} height="100" class="partner" alt="logo partenaire"></a>
+            </div>
+        </div>    
+    <div class="navlinks">
+        <ul class="nav d-flex flex-wrap justify-content-center border-bottom pb-3 my-5">
+            <li class="nav-item" ><a href="{{path('app_index')}}" class="nav-link px-2">Accueil</a></li>
+            <li class="nav-item"><a href="{{path('app_services')}}" class="nav-link px-2">Nos services</a></li>
+            <li class="nav-item"><a href="{{ path('app_gallery_index') }}" class="nav-link px-2">Nos habitats</a></li>
+            <li class="nav-item"><a href="{{path('app_contact')}}" class="nav-link px-2">Contacter</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">A Propos</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Mention légales</a></li>
+        </ul>
+        <p class="text-center text-body-info">© Copyright 2024 Arcadia</p>
+        </div>
+</footer>

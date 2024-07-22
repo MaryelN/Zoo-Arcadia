@@ -1,0 +1,28 @@
+@use '../base/main' as *;
+
+.services-hero {
+    background-image: url(../../../images/heros/tigre.jpg); 
+    background-size: cover; 
+    background-position: center; 
+    height: 350px;
+    &__text {
+      color: $light;
+      text-align: center;
+      padding-top: 100px;
+    }
+  }
+
+.services-cards__train img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.services-restaurant{
+    background-color: $secondary; 
+}
+.services-restaurant img {
+    max-width: 700px;
+    max-height: 400px;
+    object-fit: cover;
+}

@@ -1,0 +1,23 @@
+<div class="index-habitat">
+    <div class="row g-0 pt-5">
+        <div class="title-box col-6 col-md-3 col-xl-3 text-center mx-auto">
+            <h2 class="text-center">Découvrez les habitats</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class=" d-flex justify-content-center row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5">
+            {% for habitat in habitats %}
+            <div class="col card m-1" style="width : 18rem;">
+                <div class="content">
+                    <div class="content-overlay"></div>
+                    <img src="{{ vich_uploader_asset(habitat, 'imageFile') }}" alt="Habitat{{ habitat.name }}"  class="card-img-top">
+                    <div class="content-details">
+                        <a href="{{ path('app_gallery_habitat', {id: habitat.id})}}">
+                            <h2 class="card-text text-uppercase">{{ habitat.name }}</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

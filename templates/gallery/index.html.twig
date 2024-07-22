@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le Zoo et les Animaux{% endblock %}
+
+
+{% block body %}
+<body>
+    <section class="gallery-hero">
+        <div class="container pt-4 pt-xl-5">
+            <div class="row g-0 pt-5">
+                <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+                    <div class="gallery-hero__text text-center">
+                        <h1>Le Zoo et les Animaux</h1>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+    <section class="gallery__filter">
+        <div class="text-center mt-3 py-5">
+            <h2>Découvrez des animaux extraordinaires !</h2>
+        </div>
+        </section>
+        <section>
+            {% include '_partials/_habitat-cards.html.twig' %}
+        </section>
+        <section>
+            {% include '_partials/_race-cards.html.twig' %}
+        </section>
+        <section>
+            <div class="text-center mt-3 py-5 d-flex flex-column align-items-center">
+                <h2 class="mb-5">Regarder la liste des animaux !</h2>
+                <a href="{{ path('app_gallery_animal') }}" class="btn btn-primary mx-5">Regarder</a>
+            </div>
+        </section>
+{% endblock %}
+            
+            

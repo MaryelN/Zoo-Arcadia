@@ -1,0 +1,26 @@
+<div class="container">
+  <div class=" d-flex justify-content-center flex-wrap row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5">
+    {% if animals is empty %}
+      <p>Pas d'animaux trouvés</p>
+  {% else %}
+    {% for animal in animals %}
+      <div class="content">
+      <div class="col card m-1" style="width: 20rem;">
+          {% if animal.images|length > 0 %}
+            {% for image in animal.images %}
+              <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ animal.name }}" style:"width : 50rem">
+            {% endfor %}
+          {% else %}
+            <p>Aucune image trouvée</p>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ animal.name }}</h5>
+            <p class="card-text">{{ animal.details }}</p>
+            <a href="{{ path('app_gallery_animal_votes', {id: animal.id}) }}" class="btn btn-primary">Voir plus</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>

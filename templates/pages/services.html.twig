@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<body>
+    <section class="services-hero">
+        <div class="container pt-4 pt-xl-5">
+            <div class="row g-0 pt-5">
+                <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+                    <div class="services-hero__text text-center">
+                        <h1>Services</h1>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+    <section class="services-intro mt-5">
+        <div class="container text-center py-5">
+            <h2>Nos Tarifs</h2>
+            <h3>Découvrez nos offres tarifaires adaptées à tous ! Le billet d'entrée inclut une visite guidée gratuite. 
+            Pour une expérience unique, optez pour le billet train qui vous fait parcourir le zoo en train</h3>
+        </div>
+    </section>
+
+    <section class="services-cards">
+            <div class="card services-cards__price mx-3 mx-auto" style=" width: 25rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center mt-2">Tariff 1 jour</h2>
+                    <p class="card-text text center p-5">Valable tous les jours d’ouverture, 1 an à partir de la date d’achat</p>
+                    <div class="row mx-3">
+                        <div class="col text-center">
+                            <h3 class="card-price">Enfant</h3>
+                            <h3>20€</h3>
+                        </div>
+                        <div class="col text-center">
+                            <h3 class="card-price">Adulte</h3>
+                            <h3>32€</h3>
+                        </div>
+                    </div>
+                    <div class="my-5 text-center">
+                        <h3 class="card-price">PMR</h3>
+                        <h3>22€</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card services-cards__train mx-3 mx-auto mt-5" style=" width: 30rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center mt-2">Tariff 1 jour train</h2>
+                    <p class="card-text text center p-5">Valable tous les jours d’ouverture, 1 an à partir de la date d’achat</p>
+                    <img class="img-fluid rounded"src={{ asset('images/cards-2/train.jpg') }} alt="image de train">
+                    <div class="row mx-3 mt-3">
+                        <div class="col text-center">
+                            <h3 class="card-price">Enfant</h3>
+                            <h3>20€</h3>
+                        </div>
+                        <div class="col text-center">
+                            <h3 class="card-price">Adulte</h3>
+                            <h3>32€</h3>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <h3 class="card-price">PMR</h3>
+                        <h3>22€</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a class="m-5" href=""><button class="btn btn-secondary ">CONTACTER</button></a>
+            </div>
+    </section>
+
+    <section class="services-hours text-center">
+        <h2>Horaires</h2>
+        <ul class="m-5">
+            {% for schedule in schedules %}
+                <li class="m-3">{{ schedule.dayName }} : {{ schedule.opening }} - {{ schedule.closing }}</li>
+                
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="services-restaurant">
+        <div class="container text-center py-5 my-5">
+            <h2>Restaurant</h2>
+            <p class="p-5 mx-5">Savourez un délicieux repas dans notre café-jungle confortable, avec vue sur nos magnifiques oiseaux exotiques. Nous vous offrons une cuisine variée et savoureuse, préparée avec des ingrédients de producteurs locaux.</p>
+            <img class="img-fluid rounded" src={{ asset('images/cards-2/resto.jpg') }} alt="photo du restaurant">
+            <p class="p-5 mx-5">Notre menu met en valeur les saveurs locales de la région. Dégustez des plats inspirés par la richesse culinaire de la Bretagne, comme des galettes bretonnes, des fruits de mer frais et des produits fermiers.</p>
+        </div>
+    </section>
+
+</body>
+{% endblock %}

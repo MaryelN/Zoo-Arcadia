@@ -1,0 +1,25 @@
+@use '../base/colors' as *;
+
+    footer{
+        background-color: $secondary;
+
+        p, h3 {
+            color: $info;
+        }
+
+        .footer-box {
+            padding: 20px 0 20px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            
+        }
+        .partner {
+            border-radius: 50%;
+        }
+        
+        .nav-link{
+            font-size: 1.5em;
+            margin: .5rem;
+            color: $light;
+        }
+    }

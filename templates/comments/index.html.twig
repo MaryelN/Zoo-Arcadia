@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{title }}{% endblock %}
+
+{% block body %}
+    <section class="comments">
+        <div class="container d-flex flex-column align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center mb-5">Laissez-nous votre avis</h2>
+                        {{ form(form, {'method': 'POST'}) }}
+                    </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

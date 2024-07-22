@@ -1,0 +1,25 @@
+@use '../base/main' as *;
+
+h1 {
+    color: $light;
+    font-family: 'Arsenal', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    }
+
+h2 {
+    font-family: 'lalezar', sans-serif;
+    font-weight: 400;
+    }
+
+h3 {
+    font-family: 'lato', sans-serif;
+    font-weight: 400;
+    }
+
+p {
+    font-family: 'lato', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+}

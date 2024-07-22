@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<a href="{{ path('app_gallery_index') }}" class="btn btn-primary mx-auto m-3">Retour</a>
+<section>
+  <div class="container d-flex m-auto">
+    {% include '_partials/_animal-cards.html.twig' %}
+  </div>
+</section>
+  {% endblock %}
