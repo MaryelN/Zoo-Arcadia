@@ -31,7 +31,7 @@ class GalleryController extends AbstractController
         $habitats = $habitatRepository->findAll();
 
 
-        return $this->render('gallery/index.html.twig', [
+        return $this->render('pages/gallery/index.html.twig', [
             'controller_name' => 'GalleryController',
             'title' => 'Le Zoo et les animaux',
             'races' => $races,
@@ -54,7 +54,7 @@ class GalleryController extends AbstractController
 
         $animals = $animalRepository->findByHabitat($habitat);
 
-        return $this->render('gallery/habitat.html.twig', [
+        return $this->render('pages/gallery/habitat.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Habitat',
             'habitat'=>$habitat,
@@ -78,7 +78,7 @@ class GalleryController extends AbstractController
 
         $animals = $animalRepository->findBy(['race' => $race]);
 
-        return $this->render('gallery/race.html.twig', [
+        return $this->render('pages/gallery/race.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Race',
             'race'=>$race,
@@ -91,7 +91,7 @@ class GalleryController extends AbstractController
     {
         $animals = $animalRepository->findAll();
 
-        return $this->render('gallery/animal.html.twig', [
+        return $this->render('pages/gallery/animal.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Animaux',
             'animals'=>$animals
@@ -117,7 +117,7 @@ class GalleryController extends AbstractController
 
         $race = $raceRepository->find($animal->getRace());
 
-        return $this->render('gallery/animal-details.html.twig', [
+        return $this->render('pages/gallery/animal-details.html.twig', [
             'controller_name' => 'GalleryController',
             'title'=>'Animal',
             'animal'=>$animal,
