@@ -1,44 +1,34 @@
 version: '3.8'
 
 services:
-  web:
-    build:
+  php:
+    image: zoo_project
+    container_name: zoo
+    ports:
+      - 8081:80
+    volumes:
+      - .:/var/www/html/
+    build: 
       context: .
       dockerfile: Dockerfile
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql-maryel-n.alwaysdata.net
+      PMA_USER: maryel-n_ecf
+      PMA_PASSWORD: Adbdd2024<3
+      UPLOAD_LIMIT: 20M
     ports:
-      - "8000:80"
-    volumes:
-      - .:/var/www/html
-    environment:
-      - APP_ENV=dev
-      - DATABASE_URL=mysql://maryel-n_a:Admin0125!@database/maryel-n_movies?serverVersion=8.0&charset=utf8mb4
-      - MONGODB_URL=mongodb://mongo:27017
-    depends_on:
-      - database
-      - mongodb
+      - 8899:80
 
-  database:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: Admin0125!
-      MYSQL_DATABASE: maryel-n_movies
-      MYSQL_USER: maryel_n_a
-      MYSQL_PASSWORD: Admin0125!
-    volumes:
-      - db_data:/var/lib/mysql
-
-  mongodb:
-    image: mongo:7.0.14
-    restart: always
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: none
+    container_name: mailhog
     ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: maryel_n_a
-      MONGO_INITDB_ROOT_PASSWORD: Admin0125!
-    volumes:
-      - mongo_data:/data/db
-
-volumes:
-  db_data:
-  mongo_data:
+      - 1025:1025 #SMTP
+      - 8025:8025 #Web UI
