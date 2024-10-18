@@ -1,7 +1,7 @@
 {
-  "build/app.css": "/build/app.90fdbb41.css",
-  "build/app.js": "/build/app.53d71f57.js",
-  "build/runtime.js": "/build/runtime.05dacd30.js",
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
   "build/images/giraffes.jpg": "/build/images/giraffes.7a879935.jpg",
   "build/images/train.jpg": "/build/images/train.1d747849.jpg",
   "build/images/guide.jpg": "/build/images/guide.b59c313f.jpg",
