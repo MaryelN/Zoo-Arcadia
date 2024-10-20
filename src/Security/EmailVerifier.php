@@ -27,8 +27,11 @@ class EmailVerifier
             (string) $user->getId(),
             $user->getEmail()
         );
+        if (!$signatureComponents) {
+            throw new \Exception('Signature components could not be generated');
+        }
 
-        $context = $email->getContext();
+        $context = $email->getContext() ?? [];
         $context['signedUrl'] = $signatureComponents->getSignedUrl();
         $context['expiresAtMessageKey'] = $signatureComponents->getExpirationMessageKey();
         $context['expiresAtMessageData'] = $signatureComponents->getExpirationMessageData();
