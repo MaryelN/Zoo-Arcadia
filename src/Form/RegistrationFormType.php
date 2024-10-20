@@ -29,9 +29,9 @@ class RegistrationFormType extends AbstractType
                 'Employé' => 'ROLE_USER',           // label => value
                 'Vétérinaire' => 'ROLE_VETERINARY', // label => value
             ],
+            'mapped' => false,
             'expanded' => true,  
             'label'    => 'Rôle',
-            'mapped'   => false, 
             'constraints' => [
                 new Choice([
                     'choices' => ['ROLE_USER', 'ROLE_VETERINARY'],
@@ -50,8 +50,6 @@ class RegistrationFormType extends AbstractType
             ],
         ])
         ->add('plainPassword', PasswordType::class, [
-                            // instead of being set onto the object directly,
-            // this is read and encoded in the controller
             'mapped' => false,
             'attr' => ['autocomplete' => 'new-password'],
             'constraints' => [
@@ -61,7 +59,6 @@ class RegistrationFormType extends AbstractType
                 new Length([
                     'min' => 16,
                     'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                    // max length allowed by Symfony for security reasons
                     'max' => 4096,
                 ]),
             ],

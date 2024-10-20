@@ -32,6 +32,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Get the selected role
+            $selectedRole = $form->get('roles')->getData();
+            $user->setRoles([$selectedRole]);  
             // encode the plain password
             $user->setPassword(
                     $userPasswordHasher->hashPassword(
@@ -43,18 +46,24 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('arcadia@zoo.com', 'Arcadia Zoo'))
-                    ->to($user->getEmail())
-                    ->subject('Veulliez confirmer votre Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            try {
+                // Send test email to arcadia@zoo.com 
+                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                    (new TemplatedEmail())
+                        ->from(new Address('arcadia@zoo.com', 'Arcadia Zoo')) 
+                        ->to('arcadia@zoo.com') 
+                        ->subject('Test Email: Veuillez confirmer votre Email')
+                        ->htmlTemplate('registration/confirmation_email.html.twig')
+                );
+            
+                $this->addFlash('success', 'L\'enregistrement a été effectué avec succès, un email de vérification a été envoyé!');
+                
+            } catch (\Symfony\Component\Mailer\Exception\TransportExceptionInterface $e) {
+                $this->addFlash('error', 'Il y a eu un problème lors de l\'envoi de l\'e-mail de verification.');
+                error_log($e->getMessage()); 
+            }
 
-            // do anything else you need here, like send an email
-
-            return $security->login($user, AppAuthenticator::class, 'main');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -79,6 +88,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_login');
     }
 }
