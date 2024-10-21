@@ -22,10 +22,11 @@ class EmailVerifier
 
     public function sendEmailConfirmation(string $verifyEmailRouteName, User $user, TemplatedEmail $email): void
     {
+    
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             $verifyEmailRouteName,
             (string) $user->getId(),
-            $user->getEmail()
+            $user->getEmail(),
         );
         if (!$signatureComponents) {
             throw new \Exception('Signature components could not be generated');
@@ -49,7 +50,6 @@ class EmailVerifier
         $this->verifyEmailHelper->validateEmailConfirmationFromRequest($request, (string) $user->getId(), $user->getEmail());
 
         $user->setVerified(true);
-
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
