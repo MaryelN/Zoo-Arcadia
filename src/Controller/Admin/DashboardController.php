@@ -46,6 +46,7 @@ class DashboardController extends AbstractDashboardController
     
         if ($this->isGranted('ROLE_ADMIN')) {
             $menuItems[] = MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+            $menuItems[] = MenuItem::linkToRoute('Registrer un utilisateur', 'fa fa-user', 'app_register');
             $menuItems[] = MenuItem::linkToCrud('Horaires', 'fa fa-clock', Schedule::class);
             $menuItems[] = MenuItem::linkToCrud('Animaux', 'fa-solid fa-paw', Animal::class);
             $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);

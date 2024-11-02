@@ -1,19 +1,21 @@
-version: '3'
+version: '3.8'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    ports:
-      - "5432"
-###< doctrine/doctrine-bundle ###
+  php:
+    environment:
+      - APP_ENV=dev
+      - DEBUG=true
+  phpmyadmin:
+    environment:
+      - PMA_VERBOSE=1
 
 ###> symfony/mailer ###
-  mailer:
-    image: axllent/mailpit
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: none
+    container_name: mailhog
     ports:
-      - "1025"
-      - "8025"
-    environment:
-      MP_SMTP_AUTH_ACCEPT_ANY: 1
-      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+      - 1025:1025 #SMTP
+      - 8025:8025 #Web UI
 ###< symfony/mailer ###
