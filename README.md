@@ -6,24 +6,27 @@ L'application permet aux visiteurs de découvrir des informations détaillées s
 
 Réalisée par DevSoft, cette solution vise à accroître la visibilité du zoo et à renforcer son image de marque grâce à une expérience numérique conviviale.
 
-## Notre client
-Arcadia est un zoo situé en France, près de la forêt de Brocéliande, en Bretagne, depuis 1960. Le zoo abrite une grande variété d'animaux répartis dans différents habitats (savane, jungle, marais) et veille méticuleusement à leur bien-être. Chaque jour, plusieurs vétérinaires réalisent des contrôles rigoureux pour garantir la santé des animaux, et toute la nourriture est soigneusement mesurée selon les rapports vétérinaires. Grâce à une gestion financière solide, le zoo prospère sous la direction ambitieuse de José.
+## Contexte du Client
+Fondé en 1960, le Zoo Arcadia est situé près de la forêt de Brocéliande en Bretagne, France. Le zoo abrite une grande variété d'animaux répartis dans différents habitats (savane, jungle, marais) et veille avec soin au bien-être de chacun. Une équipe de vétérinaires réalise chaque jour des contrôles de santé et la nourriture est soigneusement mesurée selon des rapports vétérinaires spécifiques. Sous la direction ambitieuse de José, le zoo poursuit sa mission de conservation et d'éducation.
 
 ## Technologies utilisées
 
 - **HTML**
 - **CSS**
-- **Bootstrap 5.3.2**
+- **SASS**
+- **Bootstrap**
 - **JavaScript**
 - **PHP 8.2.11**
 - **Symfony CLI version 7.1**
 - **MySQL**
 - **MariaDB**
+- **MongoDB**
+- **Docker**
 - **Visual Studio Code** comme IDE
 - **Visual Studio Code Extension Database Client v1.3.5**
 - **MailTrap** pour le test des fonctionnalités d'envoi de courriels
 
-## Pages principales
+## Structure des Pages Principales
 
 ### Page d'accueil
 
@@ -87,6 +90,29 @@ Arcadia est un zoo situé en France, près de la forêt de Brocéliande, en Bret
 - **Composer**
 - **Symfony v.7**
 - **NPM**
+- **Docker**
+
+## Exécution avec Docker
+
+### Prérequis
+
+- **Docker** doit être installé sur votre machine. Vous pouvez télécharger Docker [ici](https://docs.docker.com/get-docker/).
+
+### Étapes pour Exécuter le Projet avec Docker
+
+1. **Tirez l'image Docker du projet depuis Docker Hub :**
+
+    ```sh
+    docker pull maryeln/zoo-arcadia
+    ```
+
+2. **Lancez le conteneur Docker pour exécuter l'application :**
+
+    ```sh
+    docker run -d -p 8080:80 maryeln/zoo-arcadia
+    ```
+
+3. **Accédez à l'application dans votre navigateur à** `http://localhost:8080`.
 
 ## Exécution locale
 
@@ -117,17 +143,26 @@ symfony server:start
 ```bash
 npm run watch
 ```
-## Utilisation de l'image Docker
-1. Téléchargez l’image Docker depuis Docker Hub en utilisant la commande suivante :
-```bash
-docker pull yourusername/zoo_project:latest
-```
-2. Créer un fichier Docker Compose :
-Si ce n’est pas déjà fait, créez un fichier docker-compose.yaml
-3. Démarrer les conteneurs :
-Avec le fichier docker-compose.yaml
-```bash
-docker-compose up -d
-```
-4. Accéder à l'application :
-http://localhost:8081.
+## Conception et Maquettes
+
+Les maquettes de l'application ont été conçues sur Figma. Vous pouvez consulter le design de l'interface utilisateur [ici]([https://www.figma.com/file/XXXXXX/zoo-arcadia?node-id=0%3A1](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Maquette-Zoo?node-id=202-1622&t=uo9RAb4tvitxR2ae-1)).
+
+## Diagramme UML de la Base de Données
+
+Le schéma de la structure UML de la base de données est représenté ci-dessous :
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <img src="public/build/images/screenshots/UML.jpeg" alt="Diagramme UML" width="300">
+</div>
+
+## Captures d'Écran
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <img src="public/build/images/screenshots/accueil.png" alt="Capture d'écran de la page d'accueil" width="300">
+    <img src="public/build/images/screenshots/habitats.png" alt="Capture d'écran des habitats" width="300">
+    <img src="public/build/images/screenshots/contact.png" alt="Capture d'écran de la page de contact" width="300">
+</div>
+
+---
+
+Ce guide vous aide à configurer et explorer l’application web du Zoo Arcadia :)
