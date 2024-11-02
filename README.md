@@ -151,13 +151,9 @@ Les maquettes de l'application ont été conçues sur Figma. Vous pouvez consult
 
 Le schéma de la structure UML de la base de données est représenté ci-dessous :
 
-<<<<<<< HEAD
-![Diagramme UML](public/build/images/UML.png)
-=======
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
     <img src="public/build/images/screenshots/UML.jpeg" alt="Diagramme UML" width="300">
 </div>
->>>>>>> develop
 
 ## Captures d'Écran
 
@@ -169,8 +165,4 @@ Le schéma de la structure UML de la base de données est représenté ci-dessou
 
 ---
 
-<<<<<<< HEAD
 Ce guide vous aide à configurer et explorer l’application web du Zoo Arcadia :)
-=======
-Ce guide vous aide à configurer et explorer l’application web du Zoo Arcadia :)
->>>>>>> develop
