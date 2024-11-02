@@ -117,3 +117,17 @@ symfony server:start
 ```bash
 npm run watch
 ```
+## Utilisation de l'image Docker
+1. Téléchargez l’image Docker depuis Docker Hub en utilisant la commande suivante :
+```bash
+docker pull yourusername/zoo_project:latest
+```
+2. Créer un fichier Docker Compose :
+Si ce n’est pas déjà fait, créez un fichier docker-compose.yaml
+3. Démarrer les conteneurs :
+Avec le fichier docker-compose.yaml
+```bash
+docker-compose up -d
+```
+4. Accéder à l'application :
+http://localhost:8081.
