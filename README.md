@@ -145,7 +145,7 @@ npm run watch
 ```
 ## Conception et Maquettes
 
-Les maquettes de l'application ont été conçues sur Figma. Vous pouvez consulter le design de l'interface utilisateur [ici]([https://www.figma.com/file/XXXXXX/zoo-arcadia?node-id=0%3A1](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Maquette-Zoo?node-id=202-1622&t=uo9RAb4tvitxR2ae-1)).
+Les maquettes de l'application ont été conçues sur Figma. Vous pouvez consulter le design de l'interface utilisateur [[ici](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Maquette-Zoo?node-id=202-1622&t=xeGi8sbDk8HBIZk2-1)].
 
 ## Diagramme UML de la Base de Données
 
