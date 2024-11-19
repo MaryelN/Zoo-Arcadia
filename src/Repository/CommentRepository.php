@@ -2,30 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Comment;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Document\comment;
+use MongoDB\Collection;
+use Doctrine\ODM\MongoDB\DocumentManager;
 
-/**
- * @extends ServiceEntityRepository<Comment>
- */
-class CommentRepository extends ServiceEntityRepository
+class CommentRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $dm;      
+    private $repository; 
+
+    public function __construct(DocumentManager $documentManager)
     {
-        parent::__construct($registry, Comment::class);
+        $this->dm = $documentManager;
+        $this->repository = $documentManager->getRepository(comment::class);
     }
 
-
-    public function findLatestComment($limit = 3): array
+    public function findLatestComment(int $limit = 3): array
     {
-        return $this->createQueryBuilder('comment')
-            ->andWhere('comment.validation = true')
-            ->orderBy('comment.timestamp', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->repository->findBy(
+            ['validation' => true],   
+            ['createdAt' => 'desc'],
+            $limit                   
+        );
     }
-
 }
