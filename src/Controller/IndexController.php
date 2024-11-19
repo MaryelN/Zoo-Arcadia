@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Repository\CommentRepository;
 use App\Repository\HabitatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,17 +13,18 @@ class IndexController extends AbstractController
 {
     #[Route('/index', name: 'app_index')]
     public function index(
-        CommentRepository $CommentRepository, 
         HabitatRepository $habitatRepository, 
-        ): Response
+        CommentRepository $commentRepository
+    ): Response
     {
-        $comments = $CommentRepository->findLatestComment();
+
+        $comments = $commentRepository->findLatestComment(3);
         $habitats = $habitatRepository->findAll();
 
-        return $this->render('pages/index.html.twig',[
+        return $this->render('pages/index.html.twig', [
             'comments' => $comments,
             'habitats' => $habitats,
-            'controller_name' => 'IndexController'
-            ]);
+            'controller_name' => 'IndexController',
+        ]);
     }
 }

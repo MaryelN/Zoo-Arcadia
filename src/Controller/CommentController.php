@@ -2,29 +2,30 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
+use App\Document\comment;
 use App\Form\CommentsType;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class CommentsController extends AbstractController
+class CommentController extends AbstractController
 {
-    #[Route('/comments', name: 'app_comments')]
-    public function sendComment(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/comments', name: 'app_comments', methods: ['GET', 'POST'])]
+    public function sendComment(Request $request, DocumentManager $dm): Response
     {
-        $comment = new Comment();
+        $comment = new comment();
 
         $form = $this->createForm(CommentsType::class, $comment);
+        
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
             $comment = $form->getData();
 
-            $manager->persist($comment);
-            $manager->flush();
+            $dm->persist($comment);
+            $dm->flush();
 
             $this->addFlash('success', 'Merci pour votre commentaire');
             return $this->redirectToRoute('app_index');

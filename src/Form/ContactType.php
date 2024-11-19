@@ -25,7 +25,7 @@ class ContactType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'min' => 2,
+                    'min' => 5,
                     'max' => 180
                 ],
                 'label' => 'E-mail',
@@ -34,7 +34,7 @@ class ContactType extends AbstractType
                         'message' => 'Veuillez saisir un e-mail'
                     ]),
                     new Length([
-                        'min' => 2,
+                        'min' => 5,
                         'max' => 180,
                         'minMessage' => 'Veuillez saisir un e-mail valide',
                         'maxMessage' => 'Veuillez saisir un e-mail valide'

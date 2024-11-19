@@ -83,7 +83,7 @@
                                 {% endif %}
                             {% endfor %}
                     </div>
-                    <p class="card-date flex-sm-fill">{{ comment.timestamp|date('Y-m-d') }}</p>
+                    <p class="card-date flex-sm-fill">{{ comment.createdAt|date('Y-m-d') }}</p>
                     <p class="card-text align-self-end flex-lg-fill">{{ comment.comment }}</p>
                     <h6 class="comment-name align-self-end">{{ comment.lastname }} {{ comment.name }}</h6>
                 </div>
