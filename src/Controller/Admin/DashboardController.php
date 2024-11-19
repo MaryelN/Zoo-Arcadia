@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Animal;
 use App\Entity\AnimalReport;
-use App\Entity\Comment;
 use App\Entity\FoodReport;
 use App\Entity\Habitat;
 use App\Entity\Image;
@@ -52,7 +51,7 @@ class DashboardController extends AbstractDashboardController
             $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
             $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
             $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
-            $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
+            $menuItems[] = MenuItem::linkToRoute('Avis', 'fa-solid fa-comment', 'admin_comments');
             $menuItems[] = MenuItem::section('Reports');
             $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
             $menuItems[] = MenuItem::linkToCrud('Reports Veterinaire', 'fa-solid fa-shield-dog', AnimalReport::class);
@@ -65,7 +64,7 @@ class DashboardController extends AbstractDashboardController
             $menuItems[] = MenuItem::linkToCrud('Images', 'fa-solid fa-camera', Image::class);
             $menuItems[] = MenuItem::linkToCrud('Habitats', 'fa-brands fa-pagelines', Habitat::class);
             $menuItems[] = MenuItem::linkToCrud('Race', 'fa-solid fa-hippo', Race::class);
-            $menuItems[] = MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Comment::class);
+            $menuItems[] = MenuItem::linkToRoute('Avis', 'fa-solid fa-comment', 'admin_comments');
             $menuItems[] = MenuItem::section('Reports');
             $menuItems[] = MenuItem::linkToCrud('Reports Norriture', 'fa-solid fa-drumstick-bite', FoodReport::class);
         }

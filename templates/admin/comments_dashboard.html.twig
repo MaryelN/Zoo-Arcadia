@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Comments Dashboard{% endblock %}
+
+{% block body %}
+<h1>Comments Dashboard</h1>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+<div class="container m-auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+            <th>Nom Visiteur</th>
+            <th>Commentaire</th>
+            <th>Note</th>
+            <th>Validé?</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.createdAt|date('Y-m-d H:i') }}</td>
+                <td>{{ comment.lastname }} {{ comment.name }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.rating }}</td>
+                <td>{{ comment.validation ? 'Oui' : 'Non' }}</td>
+            <td>
+                <a href="{{ path('admin_toggle_comment', { id: comment.id }) }}" class="btn btn-sm btn-primary">
+                    Changer Calidation
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

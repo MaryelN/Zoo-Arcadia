@@ -31,7 +31,7 @@ class comment {
     #[MongoDB\Field(type: "date")]
     protected ?\DateTime $createdAt;
     
-    public function getId(): ?int
+    public function getId(): ?string
     {
       return $this->id;
     }
@@ -79,7 +79,7 @@ class comment {
       return $this;
     }
     
-    public function isValidation(): ?bool
+    public function getValidation(): ?bool
     {
       return $this->validation;
     }
