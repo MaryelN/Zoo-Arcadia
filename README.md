@@ -1,15 +1,15 @@
-# Arcadia Zoo Application web
+# Arcadia Zoo Web Application
 
-## Description du projet
-Application web pour le Zoo Arcadia, cette application web améliore l'engagement des visiteurs en offrant une plateforme interactive pour explorer les différentes offres du zoo. 
-L'application permet aux visiteurs de découvrir des informations détaillées sur les animaux du zoo, leur état de santé, les services disponibles, ainsi que les horaires d'ouverture. 
+This guide will help you set up and explore the Arcadia Zoo web application :)
 
-Réalisée par DevSoft, cette solution vise à accroître la visibilité du zoo et à renforcer son image de marque grâce à une expérience numérique conviviale.
+## Project Description
+The Arcadia Zoo web application makes it easier for visitors to explore and enjoy everything the zoo has to offer. It provides detailed information about the animals, their health, the available services, and the zoo's opening hours.
 
-## Contexte du Client
-Fondé en 1960, le Zoo Arcadia est situé près de la forêt de Brocéliande en Bretagne, France. Le zoo abrite une grande variété d'animaux répartis dans différents habitats (savane, jungle, marais) et veille avec soin au bien-être de chacun. Une équipe de vétérinaires réalise chaque jour des contrôles de santé et la nourriture est soigneusement mesurée selon des rapports vétérinaires spécifiques. Sous la direction ambitieuse de José, le zoo poursuit sa mission de conservation et d'éducation.
+Created by DevSoft, this app is designed to attract more visitors and improve the zoo's reputation with a simple and enjoyable online experience.
 
-## Technologies utilisées
+## Client Background
+Established in 1960, Arcadia Zoo is located near the Brocéliande Forest in Brittany, France. The zoo has a diverse range of animals across unique habitats, including the savannah, jungle, and marshlands, with their care as a top priority. A dedicated team of veterinarians performs daily health checks, and each animal's diet is carefully planned according to expert guidelines. Led by the visionary José, Arcadia Zoo remains committed to its mission of conservation and education.
+## Technologies Used
 
 - **HTML**
 - **CSS**
@@ -22,69 +22,71 @@ Fondé en 1960, le Zoo Arcadia est situé près de la forêt de Brocéliande en 
 - **MariaDB**
 - **MongoDB**
 - **Docker**
-- **Visual Studio Code** comme IDE
+- **Visual Studio Code** as IDE
 - **Visual Studio Code Extension Database Client v1.3.5**
-- **MailTrap** pour le test des fonctionnalités d'envoi de courriels
+- **MailTrap** for testing email-sending functionalities
 
-## Structure des Pages Principales
+## Main Page Structure
 
-### Page d'accueil
+### Homepage
 
-- **Introduction au zoo Arcadia**: Présentation du zoo et de ses principaux attraits.
-- **Services**: Aperçu des services offerts aux visiteurs.
-- **Avis**: commentaires de visiteurs.
+- **Introduction to Arcadia Zoo**: Overview of the zoo and its key attractions.
+- **Services**: Highlights of the services offered to visitors.
+- **Reviews**: Visitor feedback and comments.
 
-  
-### Page Services
-- **Services**: Aperçu des services offerts aux visiteurs.
-- **Horaires et tarifs**: Informations sur les horaires d'ouverture et les tarifs d'entrée.
+### Services Page
 
-### Page des habitats
+- **Services Overview**: Details about the services available to visitors.
+- **Opening Hours and Pricing**: Information about zoo hours and entry fees.
 
-- **Vue globale des habitats**: Exploration des différents habitats du zoo (savane, jungle, forêt).
-- **Statistiques sur la consultation**: Données sur la popularité de chaque habitat.
+### Habitats Page
 
-### Page des animaux
+- **Global View of Habitats**: Explore the zoo's various habitats (savannah, jungle, forest).
+- **Consultation Statistics**: Data on the popularity of each habitat.
 
-- **Liste des animaux**: Catalogue des animaux présents dans le zoo avec des filtres pour affiner la recherche.
-- **Détails des animaux**: Informations détaillées sur chaque animal.
+### Animals Page
 
-### Page de contact
+- **Animal List**: A catalog of animals in the zoo with filters for refined searches.
+- **Animal Details**: In-depth information about each animal.
 
-- **Contactez-nous**: Formulaire de contact pour laisser vos coordonnées et toute demande spécifique.
+### Contact Page
 
-## Fonctionnalités
+- **Contact Us**: A contact form for visitors to leave their details and specific inquiries.
 
-### Administrateur
+## Features
 
-- **Connexion**: Accès sécurisé à l'espace administrateur.
-- **Gestion des employés**: Création et gestion des comptes d'employés.
-- **Gestion des animaux**: Ajout, modification ou suppression des animaux du catalogue.
-- **Gestion des services**: Mise à jour des services proposés.
-- **Gestion des horaires**: Modification des heures d'ouverture du zoo.
-- **Gestion des commentaires**: Réponse aux avis des visiteurs.
+### Administrator
 
-### Employés
+- **Login**: Secure access to the administrator dashboard, account validation and password modification if required for login..
+- **Employee Management**: Create and manage employee accounts.
+- **Animal Management**: Add, modify, or delete animals in the catalog.
+- **Service Management**: Update the services offered.
+- **Schedule Management**: Adjust the zoo's opening hours.
+- **Review Management**: Validate to visitor comments.
+- **Reception of emails**: The administrator will be also receiving the messages sent by the visitors via the application.   
 
-- **Connexion**: Accès sécurisé à l'espace employé.
-- **Gestion des animaux**: Ajout, modification ou suppression des animaux du catalogue.
-- **Gestion des commentaires**: Validation des avis des visiteurs.
+### Employees
 
-### Vétérinaires
+- **Login**: Secure access to the administrator dashboard, account validation and password modification if required for login.
+- **Animal Management**: Add, modify, or delete animals in the catalog.
+- **Service Management**: Update the services offered.
+- **Review Management**: Validate visitor comments.
 
-- **Connexion**: Accès sécurisé à l'espace vétérinaire.
-- **Contrôles de santé**: Gestion des rapports de santé des animaux.
+### Veterinarians
 
-### Visiteurs
+- **Login**: Secure access to the administrator dashboard, account validation and password modification if required for login.
+- **Health Checks**: Manage animal health reports.
 
-- **Exploration des animaux**: Parcourir le catalogue des animaux avec des filtres de recherche.
-- **Consultation des services**: Découvrir les services offerts par le zoo.
-- **Contact**: Formulaire de contact pour toute demande de renseignements.
-- **Avis**: Laisser des commentaires et lire les avis des autres visiteurs.
+### Visitors
 
-## Pré-requis
+- **Animal Exploration**: Browse the animal catalog by race and habitat, the animal page will also display the animal health reports.
+- **Service Consultation**: Discover the services offered by the zoo.
+- **Contact Form**: Submit inquiries and questions via a contact form.
+- **Reviews**: Leave comments and read feedback from other visitors.
 
-### Installations requises
+## Requirements
+
+### Required Installations
 
 - **PHP v.8.2**
 - **Composer**
@@ -92,77 +94,80 @@ Fondé en 1960, le Zoo Arcadia est situé près de la forêt de Brocéliande en 
 - **NPM**
 - **Docker**
 
-## Exécution avec Docker
+## Running the Application with Docker
 
-### Prérequis
+### Prerequisites
 
-- **Docker** doit être installé sur votre machine. Vous pouvez télécharger Docker [ici](https://docs.docker.com/get-docker/).
+- Ensure **Docker** is installed on your machine. Download Docker [here](https://docs.docker.com/get-docker/).
 
-### Étapes pour Exécuter le Projet avec Docker
+### Steps to Run the Project with Docker
 
-1. **Tirez l'image Docker du projet depuis Docker Hub :**
+1. **Pull the Docker image for the project from Docker Hub:**
 
     ```sh
     docker pull maryeln/zoo-arcadia
     ```
 
-2. **Lancez le conteneur Docker pour exécuter l'application :**
+2. **Run the Docker container to launch the application:**
 
     ```sh
     docker run -d -p 8080:80 maryeln/zoo-arcadia
     ```
 
-3. **Accédez à l'application dans votre navigateur à** `http://localhost:8080`.
+3. **Access the application in your browser at** `http://localhost:8080`.
 
-## Exécution locale
+## Running Locally
 
-Suivez les étapes suivantes pour configurer et exécuter le projet localement :
+Follow these steps to set up and run the project locally:
 
-1. Clonez le dépôt :
+1. Clone the repository:
 
-```bash
-git clone https://github.com/MaryelN/Zoo-Arcadia.git
+    ```bash
+    git clone https://github.com/MaryelN/Zoo-Arcadia.git
+    ```
 
-```
-2. Installez les dépendances PHP et  Node.js :
+2. Install PHP and Node.js dependencies:
 
-```bash
-composer install
-npm install
-```
-3. Configurez votre base de données dans le fichier .env.
-4. Lancez les migrations de la base de données :
-```bash
-php bin/console doctrine:migrations:migrate
-```
-5.Démarrez le serveur Symfony :
-```bash
-symfony server:start
-```
-6.Démarrez le compilateur SCSS et JavaScript en mode watch :
-```bash
-npm run watch
-```
-## Conception et Maquettes
+    ```bash
+    composer install
+    npm install
+    ```
 
-Les maquettes de l'application ont été conçues sur Figma. Vous pouvez consulter le design de l'interface utilisateur [[ici](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Maquette-Zoo?node-id=202-1622&t=xeGi8sbDk8HBIZk2-1)].
+3. Configure your database in the `.env.local` file.
+4. Run database migrations:
 
-## Diagramme UML de la Base de Données
+    ```bash
+    php bin/console doctrine:migrations:migrate
+    ```
 
-Le schéma de la structure UML de la base de données est représenté ci-dessous :
+5. Start the Symfony server:
+
+    ```bash
+    symfony server:start
+    ```
+
+6. Start the SCSS and JavaScript compiler in watch mode:
+
+    ```bash
+    npm run watch
+    ```
+
+## Design and Wireframes
+
+The application's wireframes were created using Figma. You can view the interface design [[here](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Zoo-Arcadia?node-id=202-1622&t=xeGi8sbDk8HBIZk2-1)].
+
+## UML Database Diagram
+
+Below is the UML diagram of the database structure:
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-    <img src="public/build/images/screenshots/UML.jpeg" alt="Diagramme UML" width="300">
+    <img src="public/build/images/screenshots/UML.jpeg" alt="UML Diagram" width="300">
 </div>
 
-## Captures d'Écran
+## Screenshots
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-    <img src="public/build/images/screenshots/accueil.png" alt="Capture d'écran de la page d'accueil" width="300">
-    <img src="public/build/images/screenshots/habitats.png" alt="Capture d'écran des habitats" width="300">
-    <img src="public/build/images/screenshots/contact.png" alt="Capture d'écran de la page de contact" width="300">
+    <img src="public/build/images/screenshots/accueil.png" alt="Homepage Screenshot" width="300">
+    <img src="public/build/images/screenshots/habitats.png" alt="Habitats Screenshot" width="300">
+    <img src="public/build/images/screenshots/contact.png" alt="Contact Page Screenshot" width="300">
 </div>
-
----
-
-Ce guide vous aide à configurer et explorer l’application web du Zoo Arcadia :)
