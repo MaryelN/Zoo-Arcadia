@@ -131,6 +131,7 @@ Follow these steps to set up and run the project locally:
     ```bash
     composer install
     npm install
+    npm run build
     ```
 
 3. Configure your database in the `.env.local` file.
@@ -151,8 +152,12 @@ Follow these steps to set up and run the project locally:
     ```bash
     npm run watch
     ```
-
-## Design and Wireframes
+7.Test connexion
+    As administrator:
+        Username: arcadia@zoo.com   Password: admin.zoo2024
+    As veterinary :
+        Username: vboucher@hotmail.fr  Password:password
+    ## Design and Wireframes
 
 The application's wireframes were created using Figma. You can view the interface design [[here](https://www.figma.com/design/qCIGY1QXWcKILNDJCiKqDM/Zoo-Arcadia?node-id=202-1622&t=xeGi8sbDk8HBIZk2-1)].
 
