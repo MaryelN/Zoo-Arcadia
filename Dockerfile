@@ -13,8 +13,9 @@ RUN apt-get update && apt-get install -y \
   libzip-dev \
   zip \
   unzip \
+  libssl-dev \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
-  && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl gd\
+  && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl gd \
   && pecl install mongodb \
   && docker-php-ext-enable mongodb
 
@@ -26,10 +27,8 @@ COPY . /var/www/html
 
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
 
-# Ensure that the Apache user (www-data) owns the files
+# Ensure correct ownership and permissions
 RUN chown -R www-data:www-data /var/www/html
-
-# Set the right permissions for your project
 RUN chmod -R 755 /var/www/html
 
 # Install Composer globally

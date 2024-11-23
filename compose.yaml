@@ -11,6 +11,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    user: "www-data"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -24,13 +25,13 @@ services:
     ports:
       - 8899:80
 
-  mongodb:
-    image: mongo:6.0
-    container_name: mongozoo
-    restart: always
-    ports:
-      - 8090:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: arcadia
-      MONGO_INITDB_ROOT_PASSWORD: arcadiazoo
+  # mongodb:
+  #   image: mongo:6.0
+  #   container_name: mongozoo
+  #   restart: always
+  #   ports:
+  #     - 8090:27017
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: arcadia
+  #     MONGO_INITDB_ROOT_PASSWORD: arcadiazoo
       
