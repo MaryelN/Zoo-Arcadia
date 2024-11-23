@@ -105,13 +105,13 @@ Established in 1960, Arcadia Zoo is located near the Brocéliande Forest in Brit
 1. **Pull the Docker image for the project from Docker Hub:**
 
     ```sh
-    docker pull maryeln/zoo-arcadia
+    docker pull maryeln/zoo_project:latest
     ```
 
 2. **Run the Docker container to launch the application:**
 
     ```sh
-    docker run -d -p 8080:80 maryeln/zoo-arcadia
+    docker run -d -p 8080:80 maryeln/zoo_project:latest
     ```
 
 3. **Access the application in your browser at** `http://localhost:8080`.
@@ -134,7 +134,7 @@ Follow these steps to set up and run the project locally:
     npm run build
     ```
 
-3. Configure your database in the `.env.local` file.
+3. Configure the database and mailer in the `.env.local` file.
 4. Run database migrations:
 
     ```bash
